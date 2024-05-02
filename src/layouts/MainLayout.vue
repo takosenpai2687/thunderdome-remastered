@@ -74,6 +74,9 @@ import { routes } from '../routes';
 import themes from './themes';
 
 export default {
+    created() {
+        document.title = 'Thunder Dome';
+    },
     watch: {
         "$route.fullPath": {
             immediate: true,
