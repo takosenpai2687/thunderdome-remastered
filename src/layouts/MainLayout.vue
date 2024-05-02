@@ -20,8 +20,7 @@
                     class="icon material-icon material-symbols-outlined notranslate component">diversity_3</span>Groups
             </RouterLink>
             <RouterLink class="menu points" :class="{ active: currentPageName === 'Points' }" to="/points">
-                <span
-                    class="icon material-icon material-symbols-outlined notranslate component">local_activity</span>Points
+                <span class="icon material-icon material-symbols-outlined notranslate component">local_activity</span>Points
             </RouterLink>
             <RouterLink class="menu guide" :class="{ active: currentPageName === 'Guide' }" to="/guide">
                 <span class="icon material-icon material-symbols-outlined notranslate component">
@@ -192,7 +191,7 @@ export default {
             flex-direction: column;
             gap: 0;
             align-items: center;
-            font-size: 13px;
+            font-size: 1em;
             color: #fff;
             transition: all .2s ease-out;
             overflow: hidden;
@@ -203,19 +202,23 @@ export default {
             align-items: center;
             justify-content: center;
             gap: 0;
-            width: 64px;
-            height: 72px;
+            width: 6em;
+            height: 6em;
 
             &.active,
             &:hover {
-                transform: scale(1.15);
+                .icon {
+                    transform: scale(1.2);
+                }
+
                 background-color: var(--primary-color-deeper);
                 box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.12) inset;
                 text-shadow: 0 0 2px #fff;
             }
 
             .icon {
-                font-size: 42px;
+                font-size: 3em;
+                transition: all .2s ease-out;
             }
         }
     }
@@ -264,16 +267,17 @@ export default {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border-radius: 6px;
+                    border-radius: 5px;
                     text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
                     font-weight: bold;
                     transition: all .2s ease-out;
+                    font-size: 1em;
 
                     &:hover {
                         background-color: var(--btn-hover-color);
-                        text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+                        text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
                         box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
-                        color: #555;
+                        color: rgba(0, 0, 0, 0.3);
                     }
                 }
             }
@@ -362,7 +366,7 @@ export default {
                         background-color: var(--btn-hover-color);
                         text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
                         box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
-                        color: #eee;
+                        color: rgba(0, 0, 0, 0.3);
                     }
                 }
             }

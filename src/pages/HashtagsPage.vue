@@ -18,7 +18,7 @@
                             <h3>#&nbsp;{{ room.roomName }}
                                 <!-- Unread bubble -->
                                 <span class="unread-bubble" v-if="room.unread && room.unread > 0">{{ room.unread
-                                    }}</span>
+                                }}</span>
                             </h3>
                             <span class="price">{{ room.price }}</span>
                         </header>
@@ -39,8 +39,7 @@
             <div class="chatroom-content-wrapper">
                 <div class="chatroom-content" ref="chatroomContent">
                     <!-- Messages -->
-                    <div class="message-box" :class="{ me: !!msg.isMe }" v-for="(msg, idx) in messages"
-                        :key="'msg-' + idx">
+                    <div class="message-box" :class="{ me: !!msg.isMe }" v-for="(msg, idx) in messages" :key="'msg-' + idx">
                         <div class="avatar">
                             <img :src="msg.avatar" alt="">
                         </div>
@@ -163,29 +162,29 @@ export default {
 <style lang="scss" scoped>
 $unread-text-color: #fff;
 $read-text-color: #eee;
-$members-width: 320px;
+$members-width: 28rem;
 
 .hashtags-wrapper {
     height: 100%;
     display: flex;
 
     .chatroom-list-container {
-        width: 400px;
+        width: 32em;
         height: 100%;
         border-right: 1px solid var(--line-color);
         display: flex;
         flex-direction: column;
 
         .search-container {
-            padding: 10px;
+            padding: .5em;
             border-bottom: 1px solid var(--line-color);
             display: flex;
             align-items: center;
-            gap: 8px;
-            height: 64px !important;
+            gap: .5em;
+            height: 4em;
 
             .icon {
-                font-size: 20px;
+                font-size: 1.5em;
                 color: #fff;
             }
 
@@ -196,7 +195,7 @@ $members-width: 320px;
                 outline: none;
                 background-color: transparent;
                 color: #fff;
-                font-size: 14px;
+                font-size: 1em;
                 transition: all .2s ease-out;
 
                 &:focus {
@@ -209,9 +208,10 @@ $members-width: 320px;
         .chatroom-list {
             padding: 5px 0;
             overflow-y: auto;
+            height: calc(100% - 4rem) !important;
 
             .chatroom-list-item {
-                height: 80px;
+                height: 5em;
                 display: flex;
                 align-items: center;
                 gap: 10px;
@@ -247,7 +247,7 @@ $members-width: 320px;
                         justify-content: space-between;
 
                         h3 {
-                            font-size: 18px;
+                            font-size: 1.25rem;
                             font-weight: normal;
                             padding-top: -8px;
                             display: flex;
@@ -262,14 +262,14 @@ $members-width: 320px;
                                 font-family: "roboto";
                                 font-weight: bolder;
                                 letter-spacing: 1px;
-                                width: 20px;
-                                height: 20px;
+                                width: 1.3em;
+                                height: 1.3em;
                                 margin-left: 8px;
-                                padding: 3px;
+                                padding: .3em;
                                 border-radius: 50%;
                                 background-color: #f00;
                                 color: #fff;
-                                font-size: 10px;
+                                font-size: .7em;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
@@ -292,13 +292,14 @@ $members-width: 320px;
     }
 
     .chatroom-main {
+        position: relative;
         width: calc(100% - $members-width);
         height: 100%;
 
         .chatroom-header {
             display: block;
             width: 100%;
-            height: 64px;
+            height: 4rem;
             border-bottom: 1px solid var(--line-color);
             display: flex;
             align-items: center;
@@ -306,7 +307,7 @@ $members-width: 320px;
             padding: 8px 16px;
             color: #fff;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 1.25em;
             letter-spacing: 3px;
         }
 
@@ -316,6 +317,7 @@ $members-width: 320px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            height: calc(100% - 8rem);
 
             .chatroom-content {
                 overflow-y: scroll;
@@ -409,18 +411,21 @@ $members-width: 320px;
             align-items: center;
             justify-content: space-between;
             bottom: 0;
-            height: 64px;
+            height: 4em;
             border-top: 1px solid var(--line-color);
+            padding: .5em;
+            gap: .5em;
 
             .left-footer {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
                 width: 100%;
+                height: 100%;
 
                 // Upload Button
                 button {
-                    padding: 8px;
+                    padding: .2em;
                     transition: .2s all ease-out;
                     margin-bottom: -4px;
 
@@ -438,20 +443,21 @@ $members-width: 320px;
                 // Input field
                 .input-wrapper {
                     width: 100%;
-                    padding: 10px;
                     display: flex;
                     align-items: center;
-                    gap: 8px;
-                    height: 64px !important;
+                    gap: .5em;
+                    height: 100%;
 
                     input {
+                        display: block;
+                        padding: .2em .5em;
                         width: 100%;
-                        padding: 10px;
+                        height: 100%;
                         border-radius: 5px;
                         outline: none;
                         background-color: transparent;
                         color: #fff;
-                        font-size: 18px;
+                        font-size: 1.2em;
                         transition: all .2s ease-out;
 
                         &:focus {
@@ -469,7 +475,8 @@ $members-width: 320px;
                 background-color: var(--btn-color);
                 color: #fff;
                 cursor: pointer;
-                padding: 8px 32px;
+                height: 100%;
+                padding: 0 1em;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -478,13 +485,13 @@ $members-width: 320px;
                 font-weight: bold;
                 transition: all .2s ease-out;
                 margin-right: 8px;
-                font-size: 18px;
+                font-size: 1.2em;
 
                 &:hover {
                     background-color: var(--btn-hover-color);
                     text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
                     box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
-                    color: #eee;
+                    color: rgba(0, 0, 0, 0.3);
                 }
             }
         }
@@ -497,14 +504,14 @@ $members-width: 320px;
         overflow: hidden;
 
         .chatroom-members-header {
-            height: 64px;
+            height: 4rem;
             display: flex;
             color: #fff;
             padding: 0 8px;
             align-items: center;
             justify-content: flex-start;
             border-bottom: 1px solid var(--line-color);
-            font-size: 18px;
+            font-size: 1.25em;
             font-weight: bold;
             user-select: none;
         }
@@ -544,16 +551,17 @@ $members-width: 320px;
 
                 .member-name {
                     color: #fff;
-                    font-size: 18px;
+                    font-size: 1.15rem;
                     font-weight: bold;
                     padding: 8px;
                 }
 
                 .member-time {
                     color: var(--gray-font);
-                    font-size: 12px;
+                    font-size: 1em;
                     font-style: italic;
                     margin-left: auto;
+                    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
                 }
 
                 .member-avatar {
