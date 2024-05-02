@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    font-size: 14px;
+    --primary-color: #0d47a1; /* Light Color */
+    --line-color: #1a237e; /* Medium Color */
+    --primary-color-deeper: #283593; /* Dark Color */
+    --btn-color: #50a7ea; /* Button Color */
+    --btn-hover-color: #4fc3f7; /* Button Hover Color */
+    --gray-font: #333;
+}
+*,
+html {
+    scroll-behavior: smooth !important;
+}
+input::placeholder {
+    color: var(--gray-font);
+}
+
+* {
+    margin: 0;
+    font: inherit;
+    -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+    font-family: "Roboto";
+    overflow: hidden;
+}
+
+div {
+    unicode-bidi: isolate;
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    backdrop-filter: blur(4px);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #fff;
+}

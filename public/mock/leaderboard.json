@@ -1,0 +1,62 @@
+[
+    {
+        "user": "Alice",
+        "avatar": "/img/avatar-3.png",
+        "points": 107,
+        "x": "@Alice"
+    },
+    {
+        "user": "Bob",
+        "avatar": "/img/avatar-3.png",
+        "points": 96,
+        "x": "@Bob"
+    },
+    {
+        "user": "Charlie",
+        "avatar": "/img/avatar-2.jpg",
+        "points": 80,
+        "x": "@Charlie"
+    },
+    {
+        "user": "David",
+        "avatar": "/img/avatar-2.jpg",
+        "points": 70,
+        "x": "@David"
+    },
+    {
+        "user": "Eve",
+        "avatar": "/img/avatar-1.jpg",
+        "points": 68,
+        "x": "@Eve"
+    },
+    {
+        "user": "Frank",
+        "avatar": "/img/avatar-2.jpg",
+        "points": 60,
+        "x": "@Frank"
+    },
+    {
+        "user": "Grace",
+        "avatar": "/img/avatar-1.jpg",
+        "points": 45,
+        "x": "@Grace"
+    },
+    {
+        "user": "Helen",
+        "avatar": "/img/avatar-2.jpg",
+        "points": 34,
+        "x": "@Helen"
+    },
+    {
+        "user": "Ivy",
+        "avatar": "/img/avatar-1.jpg",
+        "points": 26,
+        "x": "@Ivy"
+    },
+    {
+        "user": "Jack",
+        "avatar": "/img/avatar-3.png",
+        "points": 19,
+        "x": "@Jack"
+    }
+]
