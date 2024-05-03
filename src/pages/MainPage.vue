@@ -7,9 +7,7 @@
             </section>
             <!-- Section 2 -->
             <section class="intro-section" ref="section2">
-                <div id="line-vertical"></div>
-                <div id="line-horizontal-upper"></div>
-                <div id="line-horizontal-lower"></div>
+                <div id="rect-line"></div>
                 <!-- Card 1 -->
                 <div class="card card-1">
                     <header>
@@ -136,35 +134,20 @@ export default {
         .intro-section {
             position: relative;
 
-            #line-vertical {
+            #rect-line {
                 position: absolute;
-                top: 25%;
-                left: 75%;
-                transform: translate(-50%, 0);
-                width: 4px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 50%;
                 height: 50%;
-                background-color: #fff;
+                background-color: transparent;
+                border: 4px solid #fff;
+                border-left: none;
+                border-radius: 5em;
             }
 
-            #line-horizontal-upper {
-                position: absolute;
-                top: 25%;
-                left: 50%;
-                transform: translate(-50%, 0);
-                width: 50%;
-                height: 4px;
-                background-color: #fff;
-            }
 
-            #line-horizontal-lower {
-                position: absolute;
-                top: 75%;
-                left: 50%;
-                transform: translate(-50%, 0);
-                width: 50%;
-                height: 4px;
-                background-color: #fff;
-            }
 
             .card {
                 position: absolute;
