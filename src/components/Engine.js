@@ -72,7 +72,7 @@ export class Engine {
             IH
         );
         // Render Text
-        this.ctx.fillStyle = "#333";
+        this.ctx.fillStyle = "#fff";
         this.ctx.font = "bolder 60px Arial";
         this.ctx.textAlign = "center";
         this.ctx.fillText(
