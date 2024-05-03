@@ -120,14 +120,15 @@ export default {
 
             .creator-info {
                 color: #fff;
-                text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
 
                 h3 {
                     font-size: 1.25em;
+                    text-shadow: 0 0 1px rgba(0, 0, 0, 0.9);
                 }
 
                 p {
                     font-size: 0.9em;
+                    text-shadow: 0 0 1px rgba(0, 0, 0, 0.9);
                 }
             }
         }

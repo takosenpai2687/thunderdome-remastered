@@ -2,61 +2,61 @@
     {
         "user": "Alice",
         "avatar": "/img/avatar-3.png",
-        "points": 107,
+        "points": 102,
         "x": "@Alice"
     },
     {
         "user": "Bob",
-        "avatar": "/img/avatar-3.png",
+        "avatar": "/img/avatar-2.jpg",
         "points": 96,
         "x": "@Bob"
     },
     {
         "user": "Charlie",
         "avatar": "/img/avatar-2.jpg",
-        "points": 80,
+        "points": 83,
         "x": "@Charlie"
     },
     {
         "user": "David",
         "avatar": "/img/avatar-2.jpg",
-        "points": 70,
+        "points": 77,
         "x": "@David"
     },
     {
         "user": "Eve",
         "avatar": "/img/avatar-1.jpg",
-        "points": 68,
+        "points": 63,
         "x": "@Eve"
     },
     {
         "user": "Frank",
-        "avatar": "/img/avatar-2.jpg",
-        "points": 60,
+        "avatar": "/img/avatar-3.png",
+        "points": 54,
         "x": "@Frank"
     },
     {
         "user": "Grace",
-        "avatar": "/img/avatar-1.jpg",
-        "points": 45,
+        "avatar": "/img/avatar-2.jpg",
+        "points": 41,
         "x": "@Grace"
     },
     {
         "user": "Helen",
-        "avatar": "/img/avatar-2.jpg",
-        "points": 34,
+        "avatar": "/img/avatar-3.png",
+        "points": 33,
         "x": "@Helen"
     },
     {
         "user": "Ivy",
         "avatar": "/img/avatar-1.jpg",
-        "points": 26,
+        "points": 20,
         "x": "@Ivy"
     },
     {
         "user": "Jack",
-        "avatar": "/img/avatar-3.png",
-        "points": 19,
+        "avatar": "/img/avatar-1.jpg",
+        "points": 10,
         "x": "@Jack"
     }
 ]

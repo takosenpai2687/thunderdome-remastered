@@ -58,14 +58,19 @@
         </main>
         <!-- Activities List -->
         <div class="activities-box">
-
+            <activity-list />
         </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+import ActivityList from '../components/ActivityList.vue';
+
 export default {
+    components: {
+        ActivityList
+    },
     created() {
         this.fetchData();
     },
@@ -92,7 +97,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$activities-width: 360px;
+@import '../styles/global.scss';
 
 .wrapper {
     display: flex;
@@ -100,7 +105,7 @@ $activities-width: 360px;
     height: 100%;
 
     main {
-        width: calc(100% - $activities-width);
+        width: calc(100% - $activity-list-width);
 
         .my-info {
             display: flex;
@@ -263,7 +268,7 @@ $activities-width: 360px;
     }
 
     .activities-box {
-        width: $activities-width;
+        width: $activity-list-width;
     }
 }
 </style>

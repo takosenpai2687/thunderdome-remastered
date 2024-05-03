@@ -72,9 +72,26 @@ def mock_leaderboard():
         f.write(json.dumps(leaderboard, indent=4))
 
 
+def mock_activities():
+    activities = []
+    for i in range(10):
+        activity = {
+            "user": names[i % len(names)],
+            "group": random.choice(room_names),
+            "avatar": random.choice(avatars),
+            "avatar2": random.choice(avatars),
+            "time": f"{(i+1) * 2} days ago",
+            "price": f"{random.randint(0, 10)}FTM",
+        }
+        activities.append(activity)
+    with open("./public/mock/activities.json", "w") as f:
+        f.write(json.dumps(activities, indent=4))
+
+
 def main():
     mock_chat()
     mock_leaderboard()
+    mock_activities()
 
 
 main()
