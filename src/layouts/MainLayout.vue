@@ -20,7 +20,8 @@
                     class="icon material-icon material-symbols-outlined notranslate component">diversity_3</span>Groups
             </RouterLink>
             <RouterLink class="menu points" :class="{ active: currentPageName === 'Points' }" to="/points">
-                <span class="icon material-icon material-symbols-outlined notranslate component">local_activity</span>Points
+                <span
+                    class="icon material-icon material-symbols-outlined notranslate component">local_activity</span>Points
             </RouterLink>
             <RouterLink class="menu guide" :class="{ active: currentPageName === 'Guide' }" to="/guide">
                 <span class="icon material-icon material-symbols-outlined notranslate component">
@@ -139,6 +140,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$nav-width: 6.4rem;
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -166,7 +169,7 @@ export default {
         align-items: center;
         justify-content: flex-start;
         gap: 16px;
-        width: 90px;
+        width: $nav-width;
         border-right: 1px solid var(--line-color);
 
         .logo {
@@ -225,7 +228,7 @@ export default {
 
     main {
         height: 100%;
-        padding-left: 90px;
+        padding-left: $nav-width;
         padding-top: 56px;
         display: flex;
         overflow: hidden;
@@ -234,10 +237,10 @@ export default {
             position: fixed;
             z-index: 1;
             top: 0;
-            left: 90px;
+            left: $nav-width;
             border-bottom: 1px solid var(--line-color);
             height: 56px;
-            width: calc(100% - 90px);
+            width: calc(100% - $nav-width);
             font-size: 16px;
             display: flex;
             align-items: center;
