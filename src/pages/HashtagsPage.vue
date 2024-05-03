@@ -365,7 +365,7 @@ $members-width: 28rem;
                     .message-main {
                         display: flex;
                         flex-direction: column;
-                        align-items: flex-start;
+                        align-items: flex-end;
                         justify-content: flex-start;
                         gap: 3px;
 
