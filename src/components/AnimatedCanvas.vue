@@ -22,16 +22,16 @@ export default {
                 const canvas = this.$refs.canvas;
                 this.engine = new Engine(canvas, img);
                 this.engine.ctx.clearRect(0, 0, canvas.width, canvas.height);
-                canvas.addEventListener('mousemove', (e) => {
-                    const rect = canvas.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    this.engine.mouseX = x;
-                    this.engine.mouseY = y;
-                });
+                canvas.addEventListener('mousemove', this.handleMouseMove);
                 this.animate();
             }
         });
+    },
+    beforeUnmount() {
+        const canvas = this.$refs.canvas;
+        canvas.removeEventListener('mousemove', this.handleMouseMove);
+        this.engine.particles = [];
+        this.engine = null;
     },
     methods: {
         onTick() {
@@ -41,7 +41,17 @@ export default {
             this.engine.render();
             this.engine.update();
             requestAnimationFrame(this.animate);
-        }
+        },
+        handleMouseMove(e) {
+            const canvas = this.$refs.canvas;
+            if (!canvas) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            this.engine.mouseX = x;
+            this.engine.mouseY = y;
+        },
+
     }
 }
 </script>
