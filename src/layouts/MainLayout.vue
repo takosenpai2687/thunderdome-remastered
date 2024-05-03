@@ -159,6 +159,7 @@ $nav-width: 6.4rem;
     transition: background-color .5s ease-out;
 
     nav {
+        user-select: none;
         position: fixed;
         left: 0;
         top: 0;
