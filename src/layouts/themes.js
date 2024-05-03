@@ -3,7 +3,7 @@ const themes = {
         "--primary-color": "#0d47a1" /* Light Color */,
         "--primary-color-deeper": "#283593" /* Dark Color */,
         "--line-color": "#1a237e" /* Medium Color */,
-        "--btn-color": "#50a7ea" /* Button Color */,
+        "--btn-color": "#2196f3" /* Button Color */,
         "--btn-hover-color": "#4fc3f7",
         "--gray-font": "#aaa",
     },
