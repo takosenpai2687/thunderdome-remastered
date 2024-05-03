@@ -12,7 +12,7 @@ import PointsPage from "../pages/PointsPage.vue";
 import GuidePage from "../pages/GuidePage.vue";
 
 export const routes = [
-    { path: "/", name: "About", component: MainPage },
+    { path: "/", redirect: "/about" },
     { path: "/about", name: "About", component: MainPage },
     { path: "/hashtags", name: "Hashtags", component: HashTags },
     { path: "/creators", name: "Creators", component: CreatorsPage },
