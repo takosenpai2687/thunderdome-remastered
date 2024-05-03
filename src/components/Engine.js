@@ -1,5 +1,5 @@
 export class Particle {
-    constructor(engine, x, y, color) {
+    constructor(engine, x, y, color, size) {
         this.engine = engine;
         this.x = Math.random() * engine.width;
         this.y = Math.random() * engine.height;
@@ -8,16 +8,12 @@ export class Particle {
         this.vx = 0;
         this.vy = 0;
         this.color = color;
-        this.size = this.engine.stepSize - 1;
-        this.easing = Math.min(
-            Math.random() + 1 / Engine.loadTime / 40,
-            1 / Engine.loadTime / 20
+        this.size = size;
+        this.loadingStepPercentage = Math.min(
+            Math.random() + 1 / Engine.loadTime / 30,
+            1 / Engine.loadTime / 15
         );
-        this.amplitude = Math.random() * 50;
         this.isLoaded = false;
-        this.theta = 0;
-        this.force = 0;
-        this.friction = Math.min(Math.random() + 0.15, 1);
     }
 
     render() {
@@ -28,17 +24,16 @@ export class Particle {
     update() {
         const dx = this.engine.mouseX - this.x;
         const dy = this.engine.mouseY - this.y;
-        this.theta = Math.atan2(dy, dx);
+        const theta = Math.atan2(dy, dx);
         const dist = dx * dx + dy * dy;
         if (Engine.suckRadius > dist) {
-            this.force = (Engine.suckRadius / dist) * 50;
-            this.vx = Math.cos(this.theta) * this.force;
-            this.vy = Math.sin(this.theta) * this.force;
+            this.vx = Math.cos(theta) * (Engine.suckRadius / dist) * 50;
+            this.vy = Math.sin(theta) * (Engine.suckRadius / dist) * 50;
             this.x += this.vx;
             this.y += this.vy;
         }
-        this.x += (this.xi - this.x) * this.easing;
-        this.y += (this.yi - this.y) * this.easing;
+        this.x += (this.xi - this.x) * this.loadingStepPercentage;
+        this.y += (this.yi - this.y) * this.loadingStepPercentage;
     }
 }
 
@@ -57,7 +52,7 @@ export class Engine {
         this.height = ch;
         this.particles = [];
         this.image = image;
-        this.stepSize = 10;
+        this.stepSize = 15;
         this.mouseX = 0;
         this.mouseY = 0;
         this.init();
@@ -67,12 +62,23 @@ export class Engine {
         // Render image for once
         this.ctx.fillStyle = "transparent";
         this.ctx.fillRect(0, 0, this.width, this.height);
+        const IW = this.canvas.height * 0.5;
+        const IH = this.canvas.height * 0.5;
         this.ctx.drawImage(
             this.image,
-            this.ctx.canvas.width / 2 - this.image.width / 2,
-            this.ctx.canvas.height / 2 - this.image.height / 2,
-            this.image.width,
-            this.image.height
+            this.ctx.canvas.width / 2 - IW / 2,
+            this.ctx.canvas.height / 2 - IH / 2,
+            IW,
+            IH
+        );
+        // Render Text
+        this.ctx.fillStyle = "#333";
+        this.ctx.font = "bolder 60px Arial";
+        this.ctx.textAlign = "center";
+        this.ctx.fillText(
+            "ThunderDome",
+            this.width / 2,
+            this.canvas.height - 100
         );
         // Tessellation
         const pixels = this.ctx.getImageData(
@@ -90,8 +96,17 @@ export class Engine {
                 const a = pixels[idx + 3];
                 if (a > 0) {
                     this.particles.push(
-                        new Particle(this, x, y, `rgb(${r}, ${g}, ${b})`)
+                        new Particle(
+                            this,
+                            x,
+                            y,
+                            `rgb(${r}, ${g}, ${b})`,
+                            this.stepSize - 0.8
+                        )
                     );
+                }
+                if (y > this.canvas.height - 200) {
+                    this.stepSize = 3;
                 }
             }
         }
