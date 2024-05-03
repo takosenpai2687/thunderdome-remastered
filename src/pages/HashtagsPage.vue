@@ -18,7 +18,7 @@
                             <h3>#&nbsp;{{ room.roomName }}
                                 <!-- Unread bubble -->
                                 <span class="unread-bubble" v-if="room.unread && room.unread > 0">{{ room.unread
-                                }}</span>
+                                    }}</span>
                             </h3>
                             <span class="price">{{ room.price }}</span>
                         </header>
@@ -39,7 +39,8 @@
             <div class="chatroom-content-wrapper">
                 <div class="chatroom-content" ref="chatroomContent">
                     <!-- Messages -->
-                    <div class="message-box" :class="{ me: !!msg.isMe }" v-for="(msg, idx) in messages" :key="'msg-' + idx">
+                    <div class="message-box" :class="{ me: !!msg.isMe }" v-for="(msg, idx) in messages"
+                        :key="'msg-' + idx">
                         <div class="avatar">
                             <img :src="msg.avatar" alt="">
                         </div>
@@ -351,7 +352,7 @@ $members-width: 28rem;
                         border-radius: 50%;
                         overflow: hidden;
                         margin: 8px;
-                        box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+                        box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
 
                         img {
                             width: 100%;
@@ -395,7 +396,7 @@ $members-width: 28rem;
                             p {
                                 border-radius: 4px;
                                 background-color: #fff;
-                                box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+                                box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
                                 padding: 8px;
                             }
                         }
@@ -568,7 +569,7 @@ $members-width: 28rem;
                     width: 36px;
                     height: 36px;
                     border-radius: 50%;
-                    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
                     overflow: hidden;
 
                     img {
