@@ -82,8 +82,8 @@ export default {
     },
     methods: {
         async fetchData() {
-            const leaderboard = await axios.get('/mock/leaderboard.json').then(res => res.data);
-            this.leaderboard = leaderboard;
+            const _leaderboard = await axios.get('/mock/leaderboard.json').then(res => res.data);
+            this.leaderboard = new Array(10).fill(_leaderboard).flat();
         },
         handleClickCopy() {
             navigator.clipboard.writeText('https://thunderdome.so/from=helloworld');
@@ -181,12 +181,15 @@ export default {
         }
 
         .leaderboard {
-            padding: 16px;
+            height: 100%;
+            overflow-y: auto;
 
             .leaderboard-table {
+                margin: 1em;
                 width: 100%;
                 border-collapse: collapse;
                 border-spacing: 0;
+                max-height: 100%;
 
                 th,
                 td {
@@ -198,11 +201,16 @@ export default {
                     color: #fff;
                     font-size: 18px;
                     font-weight: bolder;
+                    position: sticky;
+                    background-color: var(--primary-color);
 
                     th {
+                        background-color: var(--primary-color);
                         padding: 8px;
                         border-bottom: 1px solid var(--line-color);
                         width: auto;
+                        position: sticky;
+                        top: 0;
                     }
                 }
 
