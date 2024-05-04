@@ -9,7 +9,7 @@
             <div class="cursor" :style="{ left: cursorX }"></div>
         </div>
         <!-- Activity Group List Content -->
-        <ul class="activity-list" v-if="tabs[tabIdx] === 'Groups'">
+        <ul class="activity-list activity-groups" v-if="tabs[tabIdx] === 'Groups'">
             <li class="act-box" v-for="act in activities.groups">
                 <img :src="act.avatar" alt="" class="act-img">
                 <div class="act-info">
@@ -27,7 +27,7 @@
         </ul>
         <!-- Activity Tickets List Content -->
         <!-- Activity Group List Content -->
-        <ul class="activity-list" v-if="tabs[tabIdx] === 'Tickets'">
+        <ul class="activity-list activity-tickets" v-if="tabs[tabIdx] === 'Tickets'">
             <li class="act-box" v-for="act in activities.tickets">
                 <img :src="act.avatar" alt="" class="act-img">
                 <div class="act-info">
@@ -91,6 +91,26 @@ export default {
 @import '../styles/global.scss';
 
 $list-tab-height: 4em;
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
 
 .activity-list-wrapper {
     width: $activity-list-width;
@@ -189,6 +209,18 @@ $list-tab-height: 4em;
                     color: var(--gray-font);
                     font-style: italic;
                 }
+            }
+        }
+
+        &.activity-groups {
+            .act-box {
+                animation: .3s ease-out slideInFromLeft;
+            }
+        }
+
+        &.activity-tickets {
+            .act-box {
+                animation: .3s ease-out slideInFromRight;
             }
         }
     }
