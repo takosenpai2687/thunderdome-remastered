@@ -67,7 +67,7 @@ export class Engine {
         this.ctx.drawImage(
             this.image,
             this.ctx.canvas.width / 2 - IW / 2,
-            this.ctx.canvas.height / 2 - IH / 2,
+            this.ctx.canvas.height * 0.4 - IH / 2,
             IW,
             IH
         );
