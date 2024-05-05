@@ -165,6 +165,16 @@ $unread-text-color: #fff;
 $read-text-color: #eee;
 $members-width: 28rem;
 
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(1600%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .hashtags-wrapper {
     height: 100%;
     display: flex;
@@ -536,6 +546,8 @@ $members-width: 28rem;
                 height: 56px;
                 border-radius: 8px;
                 transition: all .2s ease-out;
+
+                animation: slideInFromBottom 0.48s ease-out;
 
                 &:hover {
                     background-color: var(--line-color);
