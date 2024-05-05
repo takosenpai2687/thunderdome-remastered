@@ -71,13 +71,12 @@ export default {
             const mainRef = this.$refs.mainRef;
             const parentTOp = mainRef.getBoundingClientRect().top;
             const s1Top = section1.getBoundingClientRect().top - parentTOp;
-            const s2Top = section2.getBoundingClientRect().top - parentTOp;
 
-            if (e.deltaY > 0 && s1Top <= 10 && s1Top >= 0) {
-                // Scroll down
+            if (e.deltaY > 0 && s1Top <= window.innerHeight && s1Top >= 0) {
+                // Scroll down if s1Top in [0, innerHeight]
                 mainRef.scrollTo({ top: section2.getBoundingClientRect().top, behavior: 'smooth' })
-            } else if (e.deltaY < 0 && s2Top >= -100 && s1Top < 10) {
-                // Scroll up
+            } else if (e.deltaY < 0 && s1Top < 0) {
+                // Scroll up if s1Top < 0
                 mainRef.scrollTo({ top: section1.getBoundingClientRect().top, behavior: 'smooth' })
             }
         }
