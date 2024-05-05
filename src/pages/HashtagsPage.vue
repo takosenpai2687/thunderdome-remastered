@@ -260,17 +260,18 @@ $members-width: 28rem;
                             user-select: none;
 
                             .unread-bubble {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
                                 font-family: "roboto";
-                                font-weight: bolder;
-                                letter-spacing: 1px;
-                                width: 1.3em;
-                                height: 1.3em;
-                                margin-left: 8px;
-                                padding: .3em;
+                                font-weight: bold;
+                                width: 1.3rem;
+                                height: 1.3rem;
+                                font-size: .75rem;
+                                margin-left: .8rem;
                                 border-radius: 50%;
                                 background-color: #f00;
-                                color: #fff;
-                                font-size: .7em;
+                                color: #eee;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
