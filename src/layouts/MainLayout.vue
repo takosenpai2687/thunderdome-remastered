@@ -141,6 +141,7 @@ export default {
 
 <style lang="scss" scoped>
 $nav-width: 6.4rem;
+$menu-width: 5em;
 
 @keyframes fadeIn {
     from {
@@ -197,7 +198,7 @@ $nav-width: 6.4rem;
             align-items: center;
             font-size: 1em;
             color: #fff;
-            transition: all .2s ease-out;
+            transition: all .5s ease-out;
             overflow: hidden;
             border-radius: 10px;
             background-color: var(--primary-color);
@@ -206,22 +207,24 @@ $nav-width: 6.4rem;
             align-items: center;
             justify-content: center;
             gap: 0;
-            width: 6em;
-            height: 6em;
+            width: $menu-width;
+            height: $menu-width;
 
             &.active,
             &:hover {
                 .icon {
                     transform: scale(1.2);
+                    filter: drop-shadow(0 0 3px var(--line-color));
+                    -webkit-filter: drop-shadow(0 0 3px var(--line-color));
                 }
 
                 background-color: var(--primary-color-deeper);
-                box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.12) inset;
+                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.15) inset;
                 text-shadow: 0 0 2px #fff;
             }
 
             .icon {
-                font-size: 3em;
+                font-size: 2em;
                 transition: all .2s ease-out;
             }
         }
@@ -235,6 +238,7 @@ $nav-width: 6.4rem;
         overflow: hidden;
 
         .title-bar {
+            user-select: none;
             position: fixed;
             z-index: 1;
             top: 0;
