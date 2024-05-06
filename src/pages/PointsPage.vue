@@ -50,8 +50,8 @@
                                 </button>
                             </td>
                             <td>{{ player.points }}</td>
-                            <td class="x-text">{{ player.x }}</td>
-                            <td class="text-gray-400">{{ player.wallet }}</td>
+                            <td class="x-text text-gray-300">{{ player.x }}</td>
+                            <td class="text-gray-300">{{ player.wallet }}</td>
                         </tr>
 
                     </tbody>
@@ -160,7 +160,7 @@ export default {
 
                         .icon {
                             margin-top: 4px;
-                            font-size: 20px;
+                            font-size: 1.1rem;
                             font-weight: bolder;
                             color: #fff;
                             margin-left: 8px;
@@ -201,7 +201,7 @@ export default {
 
                 thead {
                     color: #fff;
-                    font-size: 18px;
+                    font-size: 1.1rem;
                     font-weight: bolder;
                     position: sticky;
                     background-color: var(--primary-color);
@@ -219,13 +219,13 @@ export default {
                 tbody {
                     tr {
                         color: #fff;
-                        font-size: 18px;
+                        font-size: 1rem;
                         font-weight: normal;
-                        height: 64px;
+                        height: 3rem;
 
                         td {
                             height: 100%;
-                            padding: 8px;
+                            padding: .5rem;
                             border-bottom: 1px solid var(--line-color);
                         }
 
@@ -233,9 +233,8 @@ export default {
                             background-color: var(--primary-color-deeper);
                         }
 
-                        .x-text {
-                            color: var(--gray-font);
-                            font-size: 15px;
+                        .x-text { 
+                            font-size: 0.9rem;
                             font-style: italic;
                             user-select: none;
 
@@ -255,8 +254,8 @@ export default {
                             overflow: hidden;
                             user-select: none;
                             transition: all .2s ease-out;
-                            padding: 4px 32px 4px 4px;
-                            gap: 16px;
+                            padding: .25rem 2rem .25rem .25rem;
+                            gap: 1rem;
 
                             &:hover {
                                 background-color: var(--btn-hover-color);
