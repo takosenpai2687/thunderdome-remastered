@@ -94,8 +94,8 @@ MAX_TAGS_PER_DOC = 3
 
 
 def mock_documentation():
-    tags = ['Trade', 'Media', 'Earn', 'Security']
-    cats = ['Security', 'Mode', 'Earn']
+    tags = ['Tag1', 'Tag2', 'Tag3', 'Tag4', 'Tag5']
+    cats = ['Trade', 'Media', 'Earn', 'Security']
     docs = {}
     for cat in cats:
         subdocs = []
