@@ -73,6 +73,7 @@ export default {
                 });
                 return acc;
             }, new Set())];
+            _tagNames.sort();
             for (const tag of _tagNames) {
                 this.tags[tag] = false;
             }
