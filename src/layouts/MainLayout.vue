@@ -245,8 +245,7 @@ $menu-width: 5em;
             left: $nav-width;
             border-bottom: 1px solid var(--line-color);
             height: 56px;
-            width: calc(100% - $nav-width);
-            font-size: 16px;
+            width: calc(100% - $nav-width); 
             display: flex;
             align-items: center;
             padding: 0 20px;
@@ -267,6 +266,11 @@ $menu-width: 5em;
                 align-items: center;
                 gap: 20px;
 
+                .icon {
+                    font-size: 1rem;
+                }
+ 
+
                 button,
                 a {
                     background-color: var(--btn-color);
@@ -274,13 +278,14 @@ $menu-width: 5em;
                     cursor: pointer;
                     padding: 8px 16px;
                     display: flex;
+                    height: 3rem;
                     align-items: center;
                     justify-content: center;
                     border-radius: 5px;
                     text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
                     font-weight: bold;
                     transition: all .2s ease-out;
-                    font-size: 1em;
+                    font-size: 1rem;
 
                     &:hover {
                         background-color: var(--btn-hover-color);
