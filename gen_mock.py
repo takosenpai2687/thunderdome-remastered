@@ -66,6 +66,7 @@ def mock_leaderboard():
             "avatar": random.choice(avatars),
             "points": random.randint(0, 10) + 10 * (10-i),
             "x": '@' + names[i % len(names)].replace(' ', ''),
+            "wallet": f"0x{format(random.randint(0, 0xFFFFFFFFFFFFFFF), '08x')}",
         }
         leaderboard.append(user)
     with open("./public/mock/leaderboard.json", "w") as f:

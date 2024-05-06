@@ -37,6 +37,7 @@
                             <th>User</th>
                             <th :style="{ width: '144px' }">Points</th>
                             <th>𝕏</th>
+                            <th>Wallet Address</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +51,7 @@
                             </td>
                             <td>{{ player.points }}</td>
                             <td class="x-text">{{ player.x }}</td>
+                            <td class="text-gray-400">{{ player.wallet }}</td>
                         </tr>
 
                     </tbody>

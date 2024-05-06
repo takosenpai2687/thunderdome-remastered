@@ -3,7 +3,7 @@
         {
             "title": "A Security Document 1",
             "tags": [
-                "Security"
+                "Earn"
             ],
             "category": "Security",
             "link": "/documentation"
@@ -11,7 +11,7 @@
         {
             "title": "A Security Document 2",
             "tags": [
-                "Security"
+                "Media"
             ],
             "category": "Security",
             "link": "/documentation"
@@ -19,9 +19,8 @@
         {
             "title": "A Security Document 3",
             "tags": [
-                "Earn",
-                "Trade",
-                "Media"
+                "Security",
+                "Trade"
             ],
             "category": "Security",
             "link": "/documentation"
@@ -30,7 +29,7 @@
             "title": "A Security Document 4",
             "tags": [
                 "Media",
-                "Security"
+                "Earn"
             ],
             "category": "Security",
             "link": "/documentation"
@@ -38,16 +37,7 @@
         {
             "title": "A Security Document 5",
             "tags": [
-                "Media",
-                "Security",
-                "Trade"
-            ],
-            "category": "Security",
-            "link": "/documentation"
-        },
-        {
-            "title": "A Security Document 6",
-            "tags": [
+                "Trade",
                 "Earn",
                 "Security"
             ],
@@ -55,11 +45,21 @@
             "link": "/documentation"
         },
         {
+            "title": "A Security Document 6",
+            "tags": [
+                "Security",
+                "Media",
+                "Earn"
+            ],
+            "category": "Security",
+            "link": "/documentation"
+        },
+        {
             "title": "A Security Document 7",
             "tags": [
+                "Security",
                 "Earn",
-                "Trade",
-                "Media"
+                "Trade"
             ],
             "category": "Security",
             "link": "/documentation"
@@ -77,9 +77,7 @@
         {
             "title": "A Security Document 9",
             "tags": [
-                "Media",
-                "Trade",
-                "Earn"
+                "Trade"
             ],
             "category": "Security",
             "link": "/documentation"
@@ -87,7 +85,7 @@
         {
             "title": "A Security Document 10",
             "tags": [
-                "Earn"
+                "Security"
             ],
             "category": "Security",
             "link": "/documentation"
@@ -97,7 +95,7 @@
         {
             "title": "A Mode Document 1",
             "tags": [
-                "Media",
+                "Security",
                 "Earn"
             ],
             "category": "Mode",
@@ -106,7 +104,6 @@
         {
             "title": "A Mode Document 2",
             "tags": [
-                "Trade",
                 "Security",
                 "Media"
             ],
@@ -116,8 +113,8 @@
         {
             "title": "A Mode Document 3",
             "tags": [
-                "Trade",
-                "Media"
+                "Security",
+                "Earn"
             ],
             "category": "Mode",
             "link": "/documentation"
@@ -125,8 +122,7 @@
         {
             "title": "A Mode Document 4",
             "tags": [
-                "Earn",
-                "Trade"
+                "Earn"
             ],
             "category": "Mode",
             "link": "/documentation"
@@ -135,7 +131,8 @@
             "title": "A Mode Document 5",
             "tags": [
                 "Media",
-                "Security"
+                "Earn",
+                "Trade"
             ],
             "category": "Mode",
             "link": "/documentation"
@@ -143,8 +140,9 @@
         {
             "title": "A Mode Document 6",
             "tags": [
+                "Trade",
                 "Media",
-                "Trade"
+                "Security"
             ],
             "category": "Mode",
             "link": "/documentation"
@@ -152,8 +150,6 @@
         {
             "title": "A Mode Document 7",
             "tags": [
-                "Earn",
-                "Media",
                 "Trade"
             ],
             "category": "Mode",
@@ -162,7 +158,9 @@
         {
             "title": "A Mode Document 8",
             "tags": [
-                "Security"
+                "Earn",
+                "Trade",
+                "Media"
             ],
             "category": "Mode",
             "link": "/documentation"
@@ -170,8 +168,7 @@
         {
             "title": "A Mode Document 9",
             "tags": [
-                "Security",
-                "Earn"
+                "Media"
             ],
             "category": "Mode",
             "link": "/documentation"
@@ -179,7 +176,9 @@
         {
             "title": "A Mode Document 10",
             "tags": [
-                "Media"
+                "Media",
+                "Earn",
+                "Trade"
             ],
             "category": "Mode",
             "link": "/documentation"
@@ -189,8 +188,7 @@
         {
             "title": "A Earn Document 1",
             "tags": [
-                "Earn",
-                "Security"
+                "Earn"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -198,8 +196,7 @@
         {
             "title": "A Earn Document 2",
             "tags": [
-                "Trade",
-                "Security"
+                "Trade"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -207,9 +204,9 @@
         {
             "title": "A Earn Document 3",
             "tags": [
-                "Earn",
-                "Media",
-                "Security"
+                "Trade",
+                "Security",
+                "Earn"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -219,7 +216,7 @@
             "tags": [
                 "Trade",
                 "Security",
-                "Earn"
+                "Media"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -227,7 +224,9 @@
         {
             "title": "A Earn Document 5",
             "tags": [
-                "Earn"
+                "Trade",
+                "Security",
+                "Media"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -235,9 +234,7 @@
         {
             "title": "A Earn Document 6",
             "tags": [
-                "Earn",
-                "Security",
-                "Media"
+                "Security"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -245,8 +242,7 @@
         {
             "title": "A Earn Document 7",
             "tags": [
-                "Security",
-                "Trade"
+                "Earn"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -254,9 +250,8 @@
         {
             "title": "A Earn Document 8",
             "tags": [
-                "Security",
-                "Trade",
-                "Earn"
+                "Media",
+                "Security"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -264,8 +259,9 @@
         {
             "title": "A Earn Document 9",
             "tags": [
+                "Security",
                 "Earn",
-                "Media"
+                "Trade"
             ],
             "category": "Earn",
             "link": "/documentation"
@@ -273,7 +269,7 @@
         {
             "title": "A Earn Document 10",
             "tags": [
-                "Trade"
+                "Earn"
             ],
             "category": "Earn",
             "link": "/documentation"

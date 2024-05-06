@@ -2,61 +2,71 @@
     {
         "user": "Alice",
         "avatar": "/img/avatar-1.jpg",
-        "points": 100,
-        "x": "@Alice"
+        "points": 103,
+        "x": "@Alice",
+        "wallet": "0x7bc54037aa02f9c"
     },
     {
         "user": "Bob",
-        "avatar": "/img/avatar-1.jpg",
-        "points": 97,
-        "x": "@Bob"
+        "avatar": "/img/avatar-3.png",
+        "points": 94,
+        "x": "@Bob",
+        "wallet": "0xedc485e2f7a6282"
     },
     {
         "user": "Charlie",
-        "avatar": "/img/avatar-1.jpg",
+        "avatar": "/img/avatar-3.png",
         "points": 87,
-        "x": "@Charlie"
+        "x": "@Charlie",
+        "wallet": "0x272b5a3fadd7f05"
     },
     {
         "user": "David",
         "avatar": "/img/avatar-3.png",
-        "points": 78,
-        "x": "@David"
+        "points": 71,
+        "x": "@David",
+        "wallet": "0xb3c32c94444515f"
     },
     {
         "user": "Eve",
-        "avatar": "/img/avatar-3.png",
-        "points": 69,
-        "x": "@Eve"
+        "avatar": "/img/avatar-1.jpg",
+        "points": 67,
+        "x": "@Eve",
+        "wallet": "0x66a9ac022f9c65e"
     },
     {
         "user": "Frank",
-        "avatar": "/img/avatar-3.png",
-        "points": 52,
-        "x": "@Frank"
+        "avatar": "/img/avatar-2.jpg",
+        "points": 55,
+        "x": "@Frank",
+        "wallet": "0x9265a3b869bb0a"
     },
     {
         "user": "Grace",
-        "avatar": "/img/avatar-1.jpg",
-        "points": 40,
-        "x": "@Grace"
+        "avatar": "/img/avatar-2.jpg",
+        "points": 46,
+        "x": "@Grace",
+        "wallet": "0xaca291f010cfd7"
     },
     {
         "user": "Helen",
-        "avatar": "/img/avatar-2.jpg",
-        "points": 38,
-        "x": "@Helen"
+        "avatar": "/img/avatar-1.jpg",
+        "points": 40,
+        "x": "@Helen",
+        "wallet": "0x3f9ba854806408a"
     },
     {
         "user": "Ivy",
-        "avatar": "/img/avatar-2.jpg",
-        "points": 21,
-        "x": "@Ivy"
+        "avatar": "/img/avatar-3.png",
+        "points": 28,
+        "x": "@Ivy",
+        "wallet": "0xad329f86130b306"
     },
     {
         "user": "Jack",
-        "avatar": "/img/avatar-2.jpg",
-        "points": 18,
-        "x": "@Jack"
+        "avatar": "/img/avatar-1.jpg",
+        "points": 14,
+        "x": "@Jack",
+        "wallet": "0x4eb7f202ade448b"
     }
 ]
