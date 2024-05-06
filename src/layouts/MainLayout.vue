@@ -43,7 +43,7 @@
                         <span class="title">Link wallet</span>
                     </button>
                     <!-- Documentation -->
-                    <button>Documentation</button>
+                    <router-link to="/documentation">Documentation</router-link>
                 </section>
             </div>
             <section class="content">
@@ -267,7 +267,8 @@ $menu-width: 5em;
                 align-items: center;
                 gap: 20px;
 
-                button {
+                button,
+                a {
                     background-color: var(--btn-color);
                     color: #fff;
                     cursor: pointer;
@@ -287,6 +288,7 @@ $menu-width: 5em;
                         box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
                         color: rgba(0, 0, 0, 0.3);
                     }
+
                 }
             }
         }

@@ -88,10 +88,34 @@ def mock_activities():
         f.write(json.dumps(activities, indent=4))
 
 
+MAX_DOCS_PER_CAT = 10
+MAX_TAGS_PER_DOC = 3
+
+
+def mock_documentation():
+    tags = ['Trade', 'Media', 'Earn', 'Security']
+    cats = ['Security', 'Mode', 'Earn']
+    docs = {}
+    for cat in cats:
+        subdocs = []
+        for i in range(MAX_DOCS_PER_CAT):
+            doc = {
+                "title": f"A {cat} Document {i+1}",
+                "tags": random.sample(tags, random.randint(1, MAX_TAGS_PER_DOC)),
+                "category": cat,
+                "link": "/documentation"
+            }
+            subdocs.append(doc)
+        docs[cat] = subdocs
+    with open("./public/mock/documentation.json", "w") as f:
+        f.write(json.dumps(docs, indent=4))
+
+
 def main():
     mock_chat()
     mock_leaderboard()
     mock_activities()
+    mock_documentation()
 
 
 main()

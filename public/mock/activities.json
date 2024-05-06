@@ -1,17 +1,17 @@
 [
     {
         "user": "Alice",
-        "group": "ftails",
+        "group": "thunderdome",
         "avatar": "/img/avatar-2.jpg",
-        "avatar2": "/img/avatar-1.jpg",
+        "avatar2": "/img/avatar-2.jpg",
         "time": "2 days ago",
         "price": "8FTM"
     },
     {
         "user": "Bob",
-        "group": "ftails",
-        "avatar": "/img/avatar-3.png",
-        "avatar2": "/img/avatar-2.jpg",
+        "group": "suisse",
+        "avatar": "/img/avatar-1.jpg",
+        "avatar2": "/img/avatar-1.jpg",
         "time": "4 days ago",
         "price": "1FTM"
     },
@@ -19,64 +19,64 @@
         "user": "Charlie",
         "group": "ftmsonic",
         "avatar": "/img/avatar-1.jpg",
-        "avatar2": "/img/avatar-1.jpg",
+        "avatar2": "/img/avatar-2.jpg",
         "time": "6 days ago",
-        "price": "4FTM"
+        "price": "8FTM"
     },
     {
         "user": "David",
-        "group": "thunderdome",
-        "avatar": "/img/avatar-1.jpg",
-        "avatar2": "/img/avatar-3.png",
+        "group": "afgh",
+        "avatar": "/img/avatar-3.png",
+        "avatar2": "/img/avatar-2.jpg",
         "time": "8 days ago",
-        "price": "1FTM"
-    },
-    {
-        "user": "Eve",
-        "group": "korea",
-        "avatar": "/img/avatar-3.png",
-        "avatar2": "/img/avatar-1.jpg",
-        "time": "10 days ago",
-        "price": "9FTM"
-    },
-    {
-        "user": "Frank",
-        "group": "haha",
-        "avatar": "/img/avatar-3.png",
-        "avatar2": "/img/avatar-3.png",
-        "time": "12 days ago",
         "price": "0FTM"
     },
     {
-        "user": "Grace",
-        "group": "korea",
-        "avatar": "/img/avatar-1.jpg",
-        "avatar2": "/img/avatar-1.jpg",
-        "time": "14 days ago",
-        "price": "3FTM"
+        "user": "Eve",
+        "group": "afgh",
+        "avatar": "/img/avatar-3.png",
+        "avatar2": "/img/avatar-2.jpg",
+        "time": "10 days ago",
+        "price": "1FTM"
     },
     {
-        "user": "Helen",
-        "group": "mclb",
+        "user": "Frank",
+        "group": "afgh",
         "avatar": "/img/avatar-2.jpg",
-        "avatar2": "/img/avatar-2.jpg",
-        "time": "16 days ago",
+        "avatar2": "/img/avatar-3.png",
+        "time": "12 days ago",
         "price": "5FTM"
     },
     {
-        "user": "Ivy",
-        "group": "test",
-        "avatar": "/img/avatar-1.jpg",
+        "user": "Grace",
+        "group": "afgh",
+        "avatar": "/img/avatar-3.png",
         "avatar2": "/img/avatar-2.jpg",
-        "time": "18 days ago",
+        "time": "14 days ago",
         "price": "2FTM"
     },
     {
-        "user": "Jack",
-        "group": "abcd",
-        "avatar": "/img/avatar-3.png",
+        "user": "Helen",
+        "group": "suisse",
+        "avatar": "/img/avatar-1.jpg",
+        "avatar2": "/img/avatar-1.jpg",
+        "time": "16 days ago",
+        "price": "2FTM"
+    },
+    {
+        "user": "Ivy",
+        "group": "afgh",
+        "avatar": "/img/avatar-2.jpg",
         "avatar2": "/img/avatar-2.jpg",
+        "time": "18 days ago",
+        "price": "4FTM"
+    },
+    {
+        "user": "Jack",
+        "group": "ftmsonic",
+        "avatar": "/img/avatar-1.jpg",
+        "avatar2": "/img/avatar-3.png",
         "time": "20 days ago",
-        "price": "6FTM"
+        "price": "2FTM"
     }
 ]

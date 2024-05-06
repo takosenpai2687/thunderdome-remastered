@@ -10,6 +10,7 @@ import CreatorsPage from "../pages/CreatorsPage.vue";
 import GroupsPage from "../pages/GroupsPage.vue";
 import PointsPage from "../pages/PointsPage.vue";
 import GuidePage from "../pages/GuidePage.vue";
+import DocumentPage from "../pages/DocumentationPage.vue";
 
 export const routes = [
     { path: "/", redirect: "/about" },
@@ -19,6 +20,7 @@ export const routes = [
     { path: "/groups", name: "Groups", component: GroupsPage },
     { path: "/points", name: "Points", component: PointsPage },
     { path: "/guide", name: "Guide", component: GuidePage },
+    { path: "/documentation", name: "Documentation", component: DocumentPage },
 ];
 
 const router = createRouter({
