@@ -112,14 +112,14 @@ export default {
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            gap: 8px;
-            padding: 8px;
+            gap: .75rem;
+            padding: 1.5rem;
 
             .my-info-row {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                gap: 8px;
+                gap: .5rem;
                 width: 100%;
 
                 .info-card {
@@ -127,32 +127,32 @@ export default {
                     flex-direction: column;
                     justify-content: space-between;
                     align-self: flex-start;
-                    border: 2px solid #eee;
+                    border: 1px solid #eee;
                     border-radius: 5px;
-                    padding: 16px;
-                    gap: 16px;
+                    padding: 1rem;
+                    gap: 1rem;
 
                     h2 {
-                        font-size: 28px;
+                        font-size: 1.5rem;
                         font-weight: bolder;
                         color: #fff;
                     }
 
                     p {
-                        font-size: 24px;
+                        font-size: 1.25rem;
                         font-weight: bolder;
                         color: #fff;
                     }
 
                     .referral-link {
-                        font-size: 18px;
+                        font-size: 1.25rem;
                         font-weight: normal;
                         color: #ddd;
                         background-color: rgba(0, 0, 0, 0.33);
                         width: auto;
                         margin-right: auto;
-                        padding: 8px 16px;
-                        border-radius: 8px;
+                        padding: .5rem 1rem;
+                        border-radius: .5rem;
                         transition: all .2s ease-out;
                         user-select: none;
 

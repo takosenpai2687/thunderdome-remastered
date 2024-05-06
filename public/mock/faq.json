@@ -1,0 +1,14 @@
+[
+    {
+        "Q": "What is ThunderDome?",
+        "A": "Thunder Dome is a Full-stack Social Fi service built on the Fantom blockchain. It allows users to engage with communities through tickets, which are social tokens that can be bought or sold."
+    },
+    {
+        "Q": "What is a Full-stack Social Fi?",
+        "A": "Full-stack Social Fi represents an expansion from personal-focused social finance to include groups and topics. In Thunder Dome, users can buy tickets to participate in and communicate with communities centered around individuals, groups, or subjects."
+    },
+    {
+        "Q": "Monetization in Thunder Dome",
+        "A": "Regarding monetization, users can generate revenue through Thunder Dome. For individual tickets, the ticket owner earns 5% of the transaction amount as profit. For group and topic tickets, holders receive 5% of the transaction volume, distributed proportionally to their holdings."
+    }
+]
