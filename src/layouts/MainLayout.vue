@@ -142,6 +142,7 @@ export default {
 <style lang="scss" scoped>
 $nav-width: 6.4rem;
 $menu-width: 5em;
+$toolbar-height: 3.5rem;
 
 @keyframes fadeIn {
     from {
@@ -233,7 +234,7 @@ $menu-width: 5em;
     main {
         height: 100%;
         padding-left: $nav-width;
-        padding-top: 56px;
+        padding-top: $toolbar-height;
         display: flex;
         overflow: hidden;
 
@@ -244,8 +245,8 @@ $menu-width: 5em;
             top: 0;
             left: $nav-width;
             border-bottom: 1px solid var(--line-color);
-            height: 56px;
-            width: calc(100% - $nav-width); 
+            height: $toolbar-height;
+            width: calc(100% - $nav-width);
             display: flex;
             align-items: center;
             padding: 0 20px;
@@ -269,7 +270,7 @@ $menu-width: 5em;
                 .icon {
                     font-size: 1rem;
                 }
- 
+
 
                 button,
                 a {
