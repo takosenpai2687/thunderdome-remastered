@@ -249,7 +249,7 @@ $toolbar-height: 4rem;
             width: calc(100% - $nav-width);
             display: flex;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 0.5rem 0 1rem;
 
             h1 {
                 display: block;
