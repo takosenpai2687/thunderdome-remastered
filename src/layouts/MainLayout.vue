@@ -142,7 +142,7 @@ export default {
 <style lang="scss" scoped>
 $nav-width: 6.4rem;
 $menu-width: 5em;
-$toolbar-height: 3.5rem;
+$toolbar-height: 4rem;
 
 @keyframes fadeIn {
     from {
