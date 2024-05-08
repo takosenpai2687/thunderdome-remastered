@@ -171,7 +171,7 @@ $toolbar-height: 4rem;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        gap: 16px;
+        gap: 2rem;
         width: $nav-width;
         border-right: 1px solid var(--line-color);
 
