@@ -165,7 +165,7 @@ $toolbar-height: 4rem;
         position: fixed;
         left: 0;
         top: 0;
-        padding-bottom: 32px;
+        padding-bottom: 2rem;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -176,7 +176,7 @@ $toolbar-height: 4rem;
         border-right: 1px solid var(--line-color);
 
         .logo {
-            padding: 21px 0;
+            padding: 1rem 0;
             transition: all .2s ease-out;
 
             &:hover {
@@ -186,9 +186,8 @@ $toolbar-height: 4rem;
             }
 
             img {
-                max-width: 55px;
-                max-height: 55px;
-
+                max-width: 3.6rem;
+                max-height: 3.6rem;
             }
         }
 
@@ -265,7 +264,7 @@ $toolbar-height: 4rem;
                 margin-left: auto;
                 display: flex;
                 align-items: center;
-                gap: 20px;
+                gap: 1.2rem;
 
                 .icon {
                     font-size: 1rem;
@@ -277,7 +276,7 @@ $toolbar-height: 4rem;
                     background-color: var(--btn-color);
                     color: #fff;
                     cursor: pointer;
-                    padding: 8px 16px;
+                    padding: .5rem 1rem;
                     display: flex;
                     height: 3rem;
                     align-items: center;
@@ -323,12 +322,12 @@ $toolbar-height: 4rem;
 
         .modal-card {
             background-color: #fff;
-            border-radius: 6px;
-            padding: 20px;
+            border-radius: .5rem;
+            padding: 1.25rem;
             box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 1.25rem;
             user-select: none;
 
             .modal-card-header {
@@ -341,7 +340,7 @@ $toolbar-height: 4rem;
             .modal-card-body {
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 1.25rem;
 
                 .modal-card-grid {
                     display: grid;
@@ -350,8 +349,8 @@ $toolbar-height: 4rem;
                     gap: 10px;
 
                     .theme-box {
-                        width: 50px;
-                        height: 50px;
+                        width: 3.5rem;
+                        height: 3.5rem;
                         border-radius: 50%;
                         border: 3px solid #fff;
                         box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
@@ -369,7 +368,7 @@ $toolbar-height: 4rem;
                     background-color: var(--btn-color);
                     color: #fff;
                     cursor: pointer;
-                    padding: 8px 16px;
+                    padding: 0.5rem 1rem;
                     display: flex;
                     align-items: center;
                     justify-content: center;
