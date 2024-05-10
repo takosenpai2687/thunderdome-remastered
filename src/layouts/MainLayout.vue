@@ -468,6 +468,7 @@ $toolbar-height: 4rem;
                     &:hover {
                         background-color: var(--primary-color-deeper);
                         box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
+                        color: #fff;
 
                         * {
                             transform: scale(1.1);
