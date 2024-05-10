@@ -38,12 +38,17 @@
                     <button @click="handleClickThemeSettings">
                         <span class="material-icon material-symbols-outlined notranslate component">brightness_4</span>
                     </button>
-                    <!-- Link Wallet -->
-                    <button>
-                        <span class="title">Link wallet</span>
-                    </button>
                     <!-- Documentation -->
                     <router-link to="/documentation">Documentation</router-link>
+                    <!-- Link Wallet -->
+                    <button v-if="!isLoggedIn" @click="handleClickLinkWallet">
+                        <span class="title">Link wallet</span>
+                    </button>
+                    <!-- Logout -->
+                    <img :src="avatar" v-if="isLoggedIn" class="avatar" alt="">
+                    <button v-if="isLoggedIn" @click="handleLogout">
+                        <span class="material-icon material-symbols-outlined notranslate component">logout</span>
+                    </button>
                 </section>
             </div>
             <section class="content">
@@ -51,8 +56,9 @@
             </section>
         </main>
         <!-- Mask -->
-        <div class="modal-mask" v-if="showThemeSettings" @click="handleClickMask">
-            <div class="modal-card" @click="(e) => e.stopPropagation()">
+        <div class="modal-mask" v-if="showThemeSettings || showLinkWallet" @click="handleClickMask">
+            <!-- Show Theme Settings -->
+            <div class="modal-card" v-if="showThemeSettings" @click="(e) => e.stopPropagation()">
                 <div class="modal-card-header">Theme Settings</div>
                 <div class="modal-card-body">
                     <div class="modal-card-grid">
@@ -64,6 +70,19 @@
                     <button class="btn-save" @click="handleSaveTheme">Save</button>
                 </div>
             </div>
+            <!-- Show Link Wallet -->
+            <div class="modal-card" v-if="showLinkWallet">
+                <div class="modal-card-header">Connect to a Wallet</div>
+                <div class="modal-card-body">
+                    <div class="flex flex-col items-center justify-center gap-4">
+                        <div class="w-full wallet-row flex flex-row items-center justify-start gap-4"
+                            v-for="k in Object.keys(wallets)" @click="handleLinkWallet">
+                            <img :src="wallets[k]" alt="avatar" class="w-12 h-12 rounded-full">
+                            <span>{{ k }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -73,9 +92,21 @@ import { RouterLink } from 'vue-router';
 import { routes } from '../routes';
 import themes from './themes';
 
+const avatars = ['/img/avatar-1.jpg', '/img/avatar-2.jpg', '/img/avatar-3.png'];
+const wallets = {
+    'MetaMask': '/img/metamask.svg',
+    'Coinbase Wallet': '/img/coinbase-wallet.svg',
+    'Walletconnect': '/img/walletconnect.svg'
+}
+
 export default {
-    created() {
+    mounted() {
         document.title = 'Thunder Dome';
+        // Check login
+        this.isLoggedIn = JSON.parse(localStorage.getItem('loggedin') ?? 'false');
+        if (this.isLoggedIn) {
+            this.avatar = localStorage.getItem('avatar') ?? '';
+        }
     },
     watch: {
         "$route.fullPath": {
@@ -92,7 +123,11 @@ export default {
     data() {
         return {
             routes, currentPageName: '', showThemeSettings: false,
-            themes
+            themes,
+            showLinkWallet: false,
+            isLoggedIn: false,
+            wallets,
+            avatar: ''
         }
     },
     components: {
@@ -105,9 +140,33 @@ export default {
         },
         handleClickMask(e) {
             e.stopPropagation();
-            this.showThemeSettings = false;
-            // Undo theme changes
-            this.loadThemesFromStorage();
+            // Closing theme settings
+            if (this.showThemeSettings) {
+                this.showThemeSettings = false;
+                // Undo theme changes
+                this.loadThemesFromStorage();
+            }
+            // Closing link wallet
+            if (this.showLinkWallet) {
+                this.showLinkWallet = false;
+            }
+        },
+        handleClickLinkWallet() {
+            this.showLinkWallet = true;
+        },
+        handleLinkWallet() {
+            this.avatar = avatars[Math.floor(Math.random() * avatars.length)];
+            localStorage.setItem('avatar', this.avatar ?? '');
+            localStorage.setItem('loggedin', JSON.stringify(true));
+            this.showLinkWallet = false;
+            this.isLoggedIn = true;
+        },
+        handleLogout() {
+            this.showLinkWallet = false;
+            this.avatar = '';
+            this.isLoggedIn = false;
+            localStorage.removeItem('avatar');
+            localStorage.setItem('loggedin', JSON.stringify(false));
         },
         handleClickTheme(theme) {
             this.theme = theme;
@@ -295,6 +354,14 @@ $toolbar-height: 4rem;
                     }
 
                 }
+
+                img.avatar {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    border-radius: 50%;
+                }
+
+
             }
         }
 
@@ -341,6 +408,29 @@ $toolbar-height: 4rem;
                 display: flex;
                 flex-direction: column;
                 gap: 1.25rem;
+
+                .wallet-row {
+                    border-radius: .5rem;
+                    padding: 1rem;
+                    border: 1px solid var(--line-color);
+                    transition: all .3s ease-out;
+                    cursor: pointer;
+                    font-weight: bold;
+                    color: #333;
+
+                    * {
+                        transition: all .2s ease-out;
+                    }
+
+                    &:hover {
+                        background-color: var(--primary-color-deeper);
+                        box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
+
+                        * {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
 
                 .modal-card-grid {
                     display: grid;
