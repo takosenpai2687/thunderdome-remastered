@@ -45,10 +45,12 @@
                         <span class="title">Link wallet</span>
                     </button>
                     <!-- Logout -->
-                    <img :src="avatar" v-if="isLoggedIn" class="avatar" alt="">
-                    <button v-if="isLoggedIn" @click="handleLogout">
-                        <span class="material-icon material-symbols-outlined notranslate component">logout</span>
-                    </button>
+                    <div class="avatar-button" v-if="isLoggedIn">
+                        <img :src="avatar" class="avatar" alt="">
+                        <button @click="handleLogout">
+                            <span class="material-icon material-symbols-outlined notranslate component">logout</span>
+                        </button>
+                    </div>
                 </section>
             </div>
             <section class="content">
@@ -355,11 +357,52 @@ $toolbar-height: 4rem;
 
                 }
 
-                img.avatar {
-                    width: 2.5rem;
-                    height: 2.5rem;
-                    border-radius: 50%;
+                .avatar-button {
+                    display: flex;
+                    align-items: center;
+                    gap: 0;
+                    justify-content: center;
+                    padding-right: .5rem;
+
+                    transition: 0.2s all ease-out;
+
+                    img.avatar {
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        border-radius: 50%;
+                    }
+
+                    button {
+                        opacity: 0;
+                        width: 0;
+                        padding: 0;
+
+                        span {
+                            width: 0;
+                        }
+                    }
+
+                    &:hover {
+                        gap: 1rem;
+
+                        img {
+                            transform: scale(1.1);
+                            box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
+                        }
+
+                        button {
+                            opacity: 1;
+                            width: auto;
+                            padding: .5rem 1rem;
+
+                            span {
+                                width: auto;
+                            }
+                        }
+                    }
                 }
+
+
 
 
             }
