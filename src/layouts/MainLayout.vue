@@ -465,6 +465,11 @@ $toolbar-height: 4rem;
                         transition: all .2s ease-out;
                     }
 
+                    img {
+                        width: 2.5rem;
+                        height: 2.5rem;
+                    }
+
                     &:hover {
                         background-color: var(--primary-color-deeper);
                         box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
@@ -472,6 +477,11 @@ $toolbar-height: 4rem;
 
                         * {
                             transform: scale(1.1);
+                        }
+
+                        img {
+                            border: 4px solid #fff;
+                            box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1) inset;
                         }
                     }
                 }
