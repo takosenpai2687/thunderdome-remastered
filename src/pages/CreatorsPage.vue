@@ -30,16 +30,14 @@
             </button>
         </div>
 
-        <div class="creators-container p-1 w-full overflow-y-scroll">
-            <div class="grid grid-cols-4 gap-4 mx-auto w-full">
-                <div class="creator-card" v-for="(creator, index) in creators" :key="'creator-' + index">
-                    <div class="creator-avatar">
-                        <img :src="creator.avatar" alt="avatar" />
-                    </div>
-                    <div class="creator-info">
-                        <h3>{{ creator.name }}</h3>
-                        <p>{{ `${creator.holders} holders, ${creator.price}FTM` }}</p>
-                    </div>
+        <div class="creators-container grid grid-cols-4 gap-4 mx-auto w-full">
+            <div class="creator-card" v-for="(creator, index) in creators" :key="'creator-' + index">
+                <div class="creator-avatar">
+                    <img :src="creator.avatar" alt="avatar" />
+                </div>
+                <div class="creator-info">
+                    <h3>{{ creator.name }}</h3>
+                    <p>{{ `${creator.holders} holders, ${creator.price}FTM` }}</p>
                 </div>
             </div>
         </div>
@@ -57,7 +55,7 @@
 import { nextTick } from 'vue';
 import axios from 'axios';
 
-const ROWS = 7;
+const ROWS = 10;
 
 export default {
     data() {
@@ -249,17 +247,21 @@ export default {
     }
 
     .creators-container {
-        padding: 2em 1em;
+        margin-top: 1rem;
+        padding: 1em;
+        max-height: 80%;
+        overflow-y: auto;
 
         .creator-card {
             background-color: var(--btn-color);
             border-radius: 100rem;
             display: flex;
-            padding: .5rem .5rem;
             overflow: hidden;
             justify-content: flex-start;
             align-items: center;
             gap: 1.25rem;
+            height: 4.5rem;
+            padding: 0 .8rem;
 
             .creator-avatar {
                 width: 3em;

@@ -29,16 +29,14 @@
                 </span>
             </button>
         </div>
-        <div class="groups-container p-1 w-full overflow-y-scroll">
-            <div class="grid grid-cols-4 gap-4 mx-auto w-full">
-                <div class="group-card" v-for="(group, index) in groups" :key="'group-' + index">
-                    <div class="group-avatar">
-                        <img :src="group.avatar" alt="avatar" />
-                    </div>
-                    <div class="group-info">
-                        <h3>{{ group.name }}</h3>
-                        <p>{{ `${group.holders} holders, ${group.price}FTM` }}</p>
-                    </div>
+        <div class="groups-container grid grid-cols-4 gap-4 mx-auto w-full">
+            <div class="group-card" v-for="(group, index) in groups" :key="'group-' + index">
+                <div class="group-avatar">
+                    <img :src="group.avatar" alt="avatar" />
+                </div>
+                <div class="group-info">
+                    <h3>{{ group.name }}</h3>
+                    <p>{{ `${group.holders} holders, ${group.price}FTM` }}</p>
                 </div>
             </div>
         </div>
@@ -55,7 +53,7 @@
 <script>
 import { nextTick } from 'vue';
 import axios from 'axios';
-const ROWS = 7;
+const ROWS = 10;
 
 export default {
     data() {
@@ -245,17 +243,21 @@ export default {
     }
 
     .groups-container {
-        padding: 2em 1em;
+        margin-top: 1rem;
+        padding: 1em;
+        max-height: 80%;
+        overflow-y: auto;
 
         .group-card {
             background-color: var(--btn-color);
             border-radius: 100rem;
             display: flex;
-            padding: .5rem .5rem;
             overflow: hidden;
             justify-content: flex-start;
             align-items: center;
             gap: 1.25rem;
+            height: 4.5rem;
+            padding: 0 .8rem;
 
             .group-avatar {
                 width: 3em;
