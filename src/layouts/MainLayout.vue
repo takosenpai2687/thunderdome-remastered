@@ -44,12 +44,9 @@
                     <button v-if="!isLoggedIn" @click="handleClickLinkWallet">
                         <span class="title">Link wallet</span>
                     </button>
-                    <!-- Logout -->
-                    <div class="avatar-button" v-if="isLoggedIn">
+                    <!-- Avatar Button -->
+                    <div class="avatar-button" v-if="isLoggedIn" @click="handleClickAvatar">
                         <img :src="avatar" class="avatar" alt="">
-                        <button @click="handleLogout">
-                            <span class="material-icon material-symbols-outlined notranslate component">logout</span>
-                        </button>
                     </div>
                 </section>
             </div>
@@ -58,7 +55,8 @@
             </section>
         </main>
         <!-- Mask -->
-        <div class="modal-mask" v-if="showThemeSettings || showLinkWallet" @click="handleClickMask">
+        <div class="modal-mask" :class="{ 'blur-effect': shouldBlur }"
+            v-if="showThemeSettings || showLinkWallet || showUserMenu" @click="handleClickMask">
             <!-- Show Theme Settings -->
             <div class="modal-card" v-if="showThemeSettings" @click="(e) => e.stopPropagation()">
                 <div class="modal-card-header">Theme Settings</div>
@@ -84,6 +82,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Show logout -->
+            <div class="logout-menu" v-if="showUserMenu">
+                <button @click="handleLogout">
+                    <span class="material-icon material-symbols-outlined notranslate component">logout</span>
+                    <span>Logout</span>
+                </button>
             </div>
         </div>
     </div>
@@ -129,7 +134,14 @@ export default {
             showLinkWallet: false,
             isLoggedIn: false,
             wallets,
-            avatar: ''
+            avatar: '',
+            showUserMenu: false,
+        }
+    },
+    computed: {
+        shouldBlur() {
+            if (this.showUserMenu) return false;
+            return true;
         }
     },
     components: {
@@ -151,6 +163,10 @@ export default {
             // Closing link wallet
             if (this.showLinkWallet) {
                 this.showLinkWallet = false;
+            }
+            // Closing user menu
+            if (this.showUserMenu) {
+                this.showUserMenu = false;
             }
         },
         handleClickLinkWallet() {
@@ -192,6 +208,10 @@ export default {
             for (let [key, value] of Object.entries(themes[this.theme])) {
                 document.documentElement.style.setProperty(key, value);
             }
+        },
+        handleClickAvatar(e) {
+            e.stopPropagation();
+            this.showUserMenu = true;
         }
     },
     created() {
@@ -212,6 +232,16 @@ $toolbar-height: 4rem;
 
     to {
         opacity: 1;
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
     }
 }
 
@@ -352,7 +382,7 @@ $toolbar-height: 4rem;
                         background-color: var(--btn-hover-color);
                         text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
                         box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
-                        color: rgba(0, 0, 0, 0.3);
+                        color: rgba(0, 0, 0, 0.6);
                     }
 
                 }
@@ -364,40 +394,19 @@ $toolbar-height: 4rem;
                     justify-content: center;
                     padding-right: .5rem;
 
-                    transition: 0.2s all ease-out;
-
                     img.avatar {
                         width: 2.5rem;
                         height: 2.5rem;
                         border-radius: 50%;
-                    }
-
-                    button {
-                        opacity: 0;
-                        width: 0;
-                        padding: 0;
-
-                        span {
-                            width: 0;
-                        }
+                        transition: 0.2s all ease-out;
                     }
 
                     &:hover {
-                        gap: 1rem;
+                        cursor: pointer;
 
                         img {
                             transform: scale(1.1);
-                            box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
-                        }
-
-                        button {
-                            opacity: 1;
-                            width: auto;
-                            padding: .5rem 1rem;
-
-                            span {
-                                width: auto;
-                            }
+                            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
                         }
                     }
                 }
@@ -422,13 +431,18 @@ $toolbar-height: 4rem;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
         animation: fadeIn .5s ease-out;
+        z-index: 998;
+        background-color: rgba(0, 0, 0, 0.15);
+
+        &.blur-effect {
+            backdrop-filter: blur(1.2rem);
+            -webkit-backdrop-filter: blur(1.2rem);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
         .modal-card {
             background-color: #fff;
@@ -439,6 +453,7 @@ $toolbar-height: 4rem;
             flex-direction: column;
             gap: 1.25rem;
             user-select: none;
+            z-index: 999;
 
             .modal-card-header {
                 font-size: 18px;
@@ -525,8 +540,44 @@ $toolbar-height: 4rem;
                         background-color: var(--btn-hover-color);
                         text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
                         box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
-                        color: rgba(0, 0, 0, 0.3);
+                        color: rgba(0, 0, 0, 0.6);
                     }
+                }
+            }
+        }
+
+        .logout-menu {
+            position: fixed;
+            top: $toolbar-height;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: flex-start;
+            align-items: center;
+            padding: .5rem;
+
+            button {
+                padding: 0.8rem;
+                color: #eee;
+                background-color: var(--btn-color);
+                border-radius: .2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .2rem;
+                transition: all .2s ease-out;
+                font-weight: bold;
+                font-size: 1.1rem;
+
+                span {
+                    animation: slideFromLeft .3s ease-out;
+                }
+
+                &:hover {
+                    background-color: var(--btn-hover-color);
+                    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+                    color: rgba(0, 0, 0, 0.6);
                 }
             }
         }
