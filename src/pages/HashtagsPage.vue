@@ -236,7 +236,7 @@ $members-width: 28rem;
                 &:hover,
                 &.active {
                     background-color: var(--primary-color-deeper);
-                    box-shadow: 0 0 10px 2px var(--line-color) inset;
+                    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1) inset;
                     font-weight: bold;
                     transform: scaleY(1.15);
 

@@ -1,4 +1,13 @@
 const themes = {
+    // Original ThunderDome Theme
+    dark: {
+        "--primary-color": "#141c27",
+        "--primary-color-deeper": "#111" /* Medium Color : AMBER 900*/,
+        "--line-color": "#24303f",
+        "--btn-color": "#50a7ea",
+        "--btn-hover-color": "#FFECB3",
+        "--gray-font": "#555",
+    },
     blue: {
         "--primary-color": "#0d47a1" /* Light Color */,
         "--primary-color-deeper": "#283593" /* Dark Color */,
@@ -31,7 +40,7 @@ const themes = {
         "--btn-hover-color": "#C8E6C9",
         "--gray-font": "#555",
     },
-    Amber: {
+    amber: {
         "--primary-color": "#FFB300" /* Light Color : AMBER 600*/,
         "--primary-color-deeper": "#FF6F00" /* Medium Color : AMBER 900*/,
         "--line-color": "#F57C00" /* Dark Color : ORANGE 700*/,

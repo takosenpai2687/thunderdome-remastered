@@ -504,7 +504,7 @@ $toolbar-height: 4rem;
                 .modal-card-grid {
                     display: grid;
                     // 4 columns
-                    grid-template-columns: repeat(5, 1fr);
+                    grid-template-columns: repeat(6, 1fr);
                     gap: 10px;
 
                     .theme-box {
