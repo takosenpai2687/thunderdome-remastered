@@ -22,16 +22,18 @@ export class Particle {
     }
 
     update() {
-        const dx = this.engine.mouseX - this.x;
-        const dy = this.engine.mouseY - this.y;
+        const dx = this.engine.mouseX - this.xi;
+        const dy = this.engine.mouseY - this.yi;
         const theta = Math.atan2(dy, dx);
-        const dist = dx * dx + dy * dy;
-        if (Engine.suckRadius > dist) {
-            this.vx = Math.cos(theta) * (Engine.suckRadius / dist) * 50;
-            this.vy = Math.sin(theta) * (Engine.suckRadius / dist) * 50;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        // Sucking effect
+        if (dist < Engine.suckRadius) {
+            this.vx = -Math.cos(theta) * (Engine.suckRadius / dist) * 1;
+            this.vy = -Math.sin(theta) * (Engine.suckRadius / dist) * 1;
             this.x += this.vx;
             this.y += this.vy;
         }
+        // Dragging back to initial position
         this.x += (this.xi - this.x) * this.loadingStepPercentage;
         this.y += (this.yi - this.y) * this.loadingStepPercentage;
     }
@@ -39,7 +41,9 @@ export class Particle {
 
 export class Engine {
     static loadTime = 2;
-    static suckRadius = 1000;
+    static suckRadius = 100;
+    static fontSize = 72;
+    static smallParticleSize = 4;
 
     constructor(canvas, image) {
         this.canvas = canvas;
@@ -55,6 +59,7 @@ export class Engine {
         this.stepSize = 15;
         this.mouseX = 0;
         this.mouseY = 0;
+        Engine.suckRadius = Math.min(this.width, this.height) * 0.095;
         this.init();
     }
 
@@ -64,22 +69,15 @@ export class Engine {
         this.ctx.fillRect(0, 0, this.width, this.height);
         const IW = this.canvas.height * 0.5;
         const IH = this.canvas.height * 0.5;
-        this.ctx.drawImage(
-            this.image,
-            this.ctx.canvas.width / 2 - IW / 2,
-            this.ctx.canvas.height * 0.4 - IH / 2,
-            IW,
-            IH
-        );
+        const IX = this.ctx.canvas.width / 2 - IW / 2;
+        const IY = this.ctx.canvas.height * 0.4 - IH / 2;
+        this.ctx.drawImage(this.image, IX, IY, IW, IH);
         // Render Text
         this.ctx.fillStyle = "#fff";
-        this.ctx.font = "bolder 60px Arial";
+        this.ctx.font = `bolder ${Engine.fontSize}px Arial`;
         this.ctx.textAlign = "center";
-        this.ctx.fillText(
-            "ThunderDome",
-            this.width / 2,
-            this.canvas.height - 100
-        );
+        Engine.textY = this.canvas.height - 120;
+        this.ctx.fillText("ThunderDome", this.width / 2, Engine.textY);
         // Tessellation
         const pixels = this.ctx.getImageData(
             0,
@@ -88,6 +86,8 @@ export class Engine {
             this.height
         ).data;
         for (let y = 0; y < this.height; y += this.stepSize) {
+            if (y < IY) continue;
+            if (y > IY + IH && y < Engine.textY - Engine.fontSize) continue;
             for (let x = 0; x < this.width; x += this.stepSize) {
                 const idx = (y * Math.floor(this.width) + x) * 4;
                 const r = pixels[idx];
@@ -105,11 +105,22 @@ export class Engine {
                         )
                     );
                 }
-                if (y > this.canvas.height - 200) {
-                    this.stepSize = 3;
+                if (y > Engine.textY - Engine.fontSize) {
+                    this.stepSize = Engine.smallParticleSize;
                 }
             }
         }
+    }
+
+    resize() {
+        const cw = this.canvas.getBoundingClientRect().width;
+        const ch = this.canvas.getBoundingClientRect().height;
+        this.canvas.width = cw;
+        this.canvas.height = ch;
+        this.width = cw;
+        this.height = ch;
+        this.particles = [];
+        this.init();
     }
 
     render() {

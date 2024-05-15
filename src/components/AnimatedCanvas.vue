@@ -23,6 +23,7 @@ export default {
                 this.engine = new Engine(canvas, img);
                 this.engine.ctx.clearRect(0, 0, canvas.width, canvas.height);
                 canvas.addEventListener('mousemove', this.handleMouseMove);
+                canvas.addEventListener('resize', this.handleResize);
                 this.animate();
             }
         });
@@ -30,10 +31,14 @@ export default {
     beforeUnmount() {
         const canvas = this.$refs.canvas;
         canvas.removeEventListener('mousemove', this.handleMouseMove);
+        canvas.removeEventListener('resize', this.handleResize);
         this.engine.particles = [];
         this.engine = null;
     },
     methods: {
+        handleResize(_e) {
+            this.engine.resize();
+        },
         onTick() {
             this.particles = this.engine.particles
         },
