@@ -165,7 +165,7 @@ export default {
                 }
 
                 header {
-                    background-color: var(--btn-hover-color);
+                    background-color: var(--btn-color);
                     padding: 0 .5em;
                     text-align: center;
                     padding: 1em;

@@ -4,9 +4,9 @@ const themes = {
         "--primary-color": "#141c27",
         "--primary-color-deeper": "#111" /* Medium Color : AMBER 900*/,
         "--line-color": "#24303f",
-        "--btn-color": "#50a7ea",
-        "--btn-hover-color": "#FFECB3",
-        "--gray-font": "#555",
+        "--btn-color": "#0d6efd",
+        "--btn-hover-color": "#50a7ea",
+        "--gray-font": "#666",
     },
     blue: {
         "--primary-color": "#0d47a1" /* Light Color */,
