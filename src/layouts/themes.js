@@ -2,7 +2,7 @@ const themes = {
     // Original ThunderDome Theme
     dark: {
         "--primary-color": "#141c27",
-        "--primary-color-deeper": "#111" /* Medium Color : AMBER 900*/,
+        "--primary-color-deeper": "#14141f",
         "--line-color": "#24303f",
         "--btn-color": "#0d6efd",
         "--btn-hover-color": "#50a7ea",

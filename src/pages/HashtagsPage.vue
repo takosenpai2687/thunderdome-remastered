@@ -58,20 +58,25 @@
 
             </div>
             <!-- Footer -->
-            <div class="chatroom-footer">
+            <form class="chatroom-footer" @submit.prevent="handleSubmitChat">
                 <div class="left-footer">
                     <!-- Attach File -->
-                    <button>
+                    <button type="button">
                         <span class="icon material-icon material-symbols-outlined component">attach_file</span>
+                    </button>
+                    <!-- Emoji -->
+                    <button type="button" @click="handleOpenEmojiMenu">
+                        <span class="icon material-icon material-symbols-outlined component">insert_emoticon</span>
                     </button>
                     <!-- Input -->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="Starting chatting" />
+                        <input ref="chatInputRef" type="text" placeholder="Starting chatting"
+                            v-model="inputChatMessage" />
                     </div>
                 </div>
                 <!-- Button Send -->
-                <button class="btn-send">Send</button>
-            </div>
+                <button type="submit" class="btn-send">Send</button>
+            </form>
         </div>
         <div class="chatroom-members">
             <!-- Members Header -->
@@ -89,11 +94,22 @@
                 </li>
             </ul>
         </div>
+
+        <!-- Emoji Menu Popup -->
+        <div class="mask" v-if="showEmojiMenu" @click="handleCloseMask">
+            <div class="emoji-menu" @click="e => e.stopPropagation()">
+                <span class="emoji-item" v-for="emoji in emojis" @click="handleSelectEmoji($event, emoji)">{{ emoji
+                    }}</span>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+
+const emojis = ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😊", "😇", "🙂", "🙃", "😉", "😍", "🤩", "😘", "😗", "😚", "😙", "😋", "😛", "😜", "🤪", "😝", "🤑", "🤗", "🤭", "🤫", "🤔", "🤐", "🤨", "😐", "😑", "😶", "🙄", "😏", "😣", "😥", "😮", "🤤", "😯", "😪", "😫", "😴", "😌", "😛", "😜", "😝", "🤑", "🤓", "😎", "🥳", "😕", "😟", "🙁", "😮", "😯", "😲", "😳", "🥺", "😦", "😧", "😨", "😰", "😢", "😥", "🤯", "😬", "😱", "😭", "😖", "😣", "😞", "😓", "😩"];
+
 export default {
     created() {
         this.fetchData();
@@ -103,7 +119,10 @@ export default {
             chatrooms: [],
             currentIdx: 0,
             members: [],
-            messages: []
+            messages: [],
+            inputChatMessage: '',
+            showEmojiMenu: false,
+            emojis
         }
     },
     methods: {
@@ -122,6 +141,47 @@ export default {
             this.resetMembers();
             this.resetMessages();
         },
+        handleSubmitChat() {
+            this.sendMessage(this.inputChatMessage);
+            this.inputChatMessage = '';
+        },
+        handleSelectEmoji(e, emoji) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.inputChatMessage += emoji;
+            this.showEmojiMenu = false;
+            if (this.$refs.chatInputRef) {
+                this.$refs.chatInputRef.focus();
+            }
+        },
+        sendMessage(msg) {
+            const _msg = msg.trim();
+            if (_msg === "") {
+                return;
+            }
+            const _messages = [..._msg.split("\n")];
+            this.chatrooms[this.currentIdx].messages.push({
+                avatar: "/img/avatar-1.jpg",
+                username: "Me",
+                time: '1 second ago',
+                content: _messages,
+                isMe: true
+            });
+            this.$nextTick(() => {
+                const chatroomContent = this.$refs.chatroomContent;
+                // Animated
+                chatroomContent.scrollTo({
+                    top: chatroomContent.scrollHeight,
+                    behavior: 'smooth'
+                });
+            });
+        },
+        handleOpenEmojiMenu() {
+            this.showEmojiMenu = true;
+        },
+        handleCloseMask() {
+            this.showEmojiMenu = false;
+        },
         resetMembers() {
             this.members = Array.from(this.chatrooms.flatMap(room => room.messages.map(msg => ({
                 avatar: msg.avatar,
@@ -138,7 +198,6 @@ export default {
         },
         resetMessages() {
             this.messages = this.chatrooms[this.currentIdx].messages;
-
             // Scroll to bottom
             this.$nextTick(() => {
                 const chatroomContent = this.$refs.chatroomContent;
@@ -164,6 +223,8 @@ export default {
 $unread-text-color: #fff;
 $read-text-color: #eee;
 $members-width: 28rem;
+$footer-height: 4rem;
+$left-width: 32rem;
 
 @keyframes slideInFromBottom {
     0% {
@@ -175,12 +236,22 @@ $members-width: 28rem;
     }
 }
 
+@keyframes popup {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 .hashtags-wrapper {
     height: 100%;
     display: flex;
 
     .chatroom-list-container {
-        width: 32em;
+        width: $left-width;
         height: 100%;
         border-right: 1px solid var(--line-color);
         display: flex;
@@ -406,7 +477,7 @@ $members-width: 28rem;
 
                             p {
                                 border-radius: 4px;
-                                background-color: #fff;
+                                background-color: #eee;
                                 box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
                                 padding: 8px;
                             }
@@ -414,16 +485,15 @@ $members-width: 28rem;
                     }
                 }
             }
-
-
         }
+
 
         .chatroom-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
             bottom: 0;
-            height: 4em;
+            height: $footer-height;
             border-top: 1px solid var(--line-color);
             padding: .5em;
             gap: .5em;
@@ -507,6 +577,8 @@ $members-width: 28rem;
                 }
             }
         }
+
+
     }
 
     .chatroom-members {
@@ -596,5 +668,53 @@ $members-width: 28rem;
 
         }
     }
+
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .emoji-menu {
+            animation: popup 0.15s ease-out;
+            margin-left: .3rem;
+            margin-bottom: .6rem;
+            position: fixed;
+            bottom: $footer-height;
+            left: $left-width ;
+            width: 40rem;
+            height: 25rem;
+            border-radius: 1rem;
+            background-color: rgba(200, 200, 200, 0.7);
+            backdrop-filter: blur(2rem);
+            --webkit-backdrop-filter: blur(2rem);
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+            overflow-x: hidden;
+            overflow-y: auto;
+            user-select: none;
+
+            .emoji-item {
+                font-size: 2em;
+                cursor: pointer;
+                transition: all .15s ease-out;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50rem;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.1);
+                    transform: scale(1.2);
+                    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+                    box-shadow: 0 0 6px 1.5px rgba(0, 0, 0, 0.2) inset;
+                }
+            }
+        }
+    }
+
 }
 </style>
