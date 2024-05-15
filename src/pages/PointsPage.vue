@@ -132,7 +132,7 @@ export default {
                     border: 1px solid #eee;
                     border-radius: 5px;
                     padding: 1rem;
-                    gap: 1rem;
+                    gap: 1.25rem;
 
                     h2 {
                         font-size: 1.5rem;
@@ -233,7 +233,7 @@ export default {
                             background-color: var(--primary-color-deeper);
                         }
 
-                        .x-text { 
+                        .x-text {
                             font-size: 0.9rem;
                             font-style: italic;
                             user-select: none;

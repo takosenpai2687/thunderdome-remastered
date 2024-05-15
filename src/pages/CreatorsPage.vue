@@ -6,8 +6,8 @@
             <!-- Cursor -->
             <div class="cursor absolute" :style="{ left: cursorX }"></div>
         </div>
-        <div class="creators-container p-1 w-full h-full overflow-y-scroll">
-            <div class="grid grid-cols-5 gap-4 mx-auto w-full">
+        <div class="creators-container p-1 w-full overflow-y-scroll">
+            <div class="grid grid-cols-4 gap-4 mx-auto w-full">
                 <div class="creator-card" v-for="(creator, index) in creators" :key="'creator-' + index">
                     <div class="creator-avatar">
                         <img :src="creator.avatar" alt="avatar" />
@@ -19,6 +19,13 @@
                 </div>
             </div>
         </div>
+        <!-- Pagination -->
+        <div class="pagination flex justify-center items-center mt-4 gap-4">
+            <button @click="handleChangePage(pageIdx - 1)">Prev</button>
+            <span>{{ pageIdx + 1 }}</span>
+            <button @click="handleChangePage(pageIdx + 1)"
+                :disabled="pageIdx === Math.floor(total / pageSize)">Next</button>
+        </div>
     </div>
 </template>
 
@@ -26,13 +33,19 @@
 import { nextTick } from 'vue';
 import axios from 'axios';
 
+const ROWS = 7;
+
 export default {
     data() {
         return {
             cursorX: 0,
             tabIdx: 0,
             tabs: ['My Creators', 'Trending', 'Top', 'New'],
-            creators: []
+            creators: [],
+            allCreators: [],
+            pageIdx: 0,
+            pageSize: 4 * ROWS,
+            total: 0
         }
     },
     methods: {
@@ -41,16 +54,26 @@ export default {
             this.tabIdx = index;
             this.cursorX = button.offsetLeft + 'px';
             this.creators.sort(() => Math.random() - 0.5);
+            this.pageIdx = 0;
         },
         async fetchData() {
-            const _creators = await axios.get('/mock/leaderboard.json').then(res => res.data.map(u => ({
+            let _creators = await axios.get('/mock/leaderboard.json').then(res => res.data.map(u => ({
                 name: u.user,
                 avatar: u.avatar,
                 description: `${Math.floor(Math.random() * 1000)} holders, ${Math.ceil(Math.random() * 10)}FTM`
             })));
-            // Repeat 5 times
-            this.creators = new Array(15).fill(_creators).flat();
-        }
+            // Repeat 25 times
+            _creators = new Array(25).fill(_creators).flat();
+            // Pagination
+            this.total = _creators.length;
+            this.allCreators = _creators;
+            this.creators = this.allCreators.slice(0, this.pageSize);
+        },
+        handleChangePage(pageIdx) {
+            if (pageIdx < 0 || pageIdx > Math.floor(this.total / this.pageSize)) return;
+            this.pageIdx = pageIdx;
+            this.creators = this.allCreators.slice(this.pageIdx * this.pageSize, (this.pageIdx + 1) * this.pageSize);
+        },
     },
     mounted() {
         this.fetchData();
@@ -100,11 +123,11 @@ export default {
             background-color: var(--btn-color);
             border-radius: 100rem;
             display: flex;
-            padding: .1em .5em;
+            padding: .5rem .5rem;
             overflow: hidden;
             justify-content: flex-start;
             align-items: center;
-            gap: 1em;
+            gap: 1.25rem;
 
             .creator-avatar {
                 width: 3em;
@@ -130,6 +153,32 @@ export default {
                     font-size: 0.9em;
                     text-shadow: 0 0 1px rgba(0, 0, 0, 0.9);
                 }
+            }
+        }
+
+    }
+
+
+    .pagination {
+        user-select: none;
+        color: #FFF;
+
+        span {
+            font-size: 1.1rem;
+        }
+
+        button {
+            padding: .5em 1em;
+            background-color: var(--btn-color);
+            color: #eee;
+            border-radius: 100rem;
+            font-size: 1.1rem;
+            transition: 0.3s all ease-out;
+            font-weight: bold;
+
+            &:hover {
+                background-color: var(--btn-hover-color);
+                text-shadow: 0 0 2px rgba(255, 255, 255, 0.9);
             }
         }
     }
