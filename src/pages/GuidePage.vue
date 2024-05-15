@@ -7,9 +7,17 @@
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="faq-panel">
-            <div class="faq-header">Frequently Asked Questions</div>
+            <div class="faq-header flex flex-row justify-between items-center">
+                <span>Frequently Asked Questions</span>
+                <div class="search-container">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                    <input @input="handleSearch" type="text" name="" id="" v-model="searchStr">
+                </div>
+            </div>
             <div class="faq-items-list">
-                <div class="faq-item" :key="'faq-' + i" v-for="(faq, i) in faqs">
+                <div class="faq-item" :key="'faq-' + i" v-for="(faq, i) in faqsFiltered">
                     <p class="faq-question">{{ faq.Q }}</p>
                     <p class="faq-answer">{{ faq.A }}</p>
                 </div>
@@ -26,13 +34,26 @@ export default {
     },
     data() {
         return {
-            faqs: []
+            faqs: [],
+            faqsFiltered: [],
+            searchStr: ''
         }
     },
     methods: {
         async fetchData() {
             const _faqs = await axios.get('/mock/faq.json').then(res => res.data);
-            this.faqs = new Array(5).fill(_faqs).flat();
+            this.faqs = new Array(6).fill(_faqs).flat();
+            this.faqsFiltered = [...this.faqs];
+        },
+        handleSearch(_e) {
+            const _searchStr = this.searchStr.trim().toLocaleLowerCase();
+            if (_searchStr === "") {
+                this.faqsFiltered = [...this.faqs];
+                return;
+            }
+            this.faqsFiltered = this.faqs.filter(faq => {
+                return faq.Q.toLocaleLowerCase().includes(_searchStr) || faq.A.toLocaleLowerCase().includes(_searchStr);
+            });
         }
     }
 }
@@ -108,6 +129,34 @@ $faq-panel-width: 40%;
             color: #fff;
             text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
             user-select: none;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: .5rem;
+            height: 80%;
+            padding: 0.3rem 1rem;
+            background-color: var(--primary-color-deeper);
+            color: #eee;
+            border-radius: 19rem;
+            box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2) inset;
+            font-weight: normal;
+
+            input {
+                width: 100%;
+                outline: none;
+                background-color: transparent;
+                font-size: 1.05em;
+                width: 10rem;
+                transition: all .15s ease-out;
+                font-weight: normal;
+
+                &:focus {
+                    width: 12rem;
+                }
+            }
         }
 
 
