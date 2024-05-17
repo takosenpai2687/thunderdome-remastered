@@ -43,9 +43,9 @@
         </div>
         <!-- Pagination -->
         <div class="pagination flex justify-center items-center mt-4 gap-4">
-            <button @click="handleChangePage(pageIdx - 1)">Prev</button>
+            <button @click="handleChangePage(pageIdx - 1)" :class="{ 'btn-hidden': pageIdx === 0 }">Prev</button>
             <span>{{ pageIdx + 1 }} / {{ totalPages }}</span>
-            <button @click="handleChangePage(pageIdx + 1)"
+            <button @click="handleChangePage(pageIdx + 1)" :class="{ 'btn-hidden': pageIdx === totalPages - 1 }"
                 :disabled="pageIdx === Math.floor(total / pageSize)">Next</button>
         </div>
     </div>
@@ -307,12 +307,16 @@ export default {
             color: #eee;
             border-radius: 100rem;
             font-size: 1.1rem;
-            transition: 0.3s all ease-out;
+            transition: 0.3s backgound-color ease-out;
             font-weight: bold;
 
             &:hover {
                 background-color: var(--btn-hover-color);
                 text-shadow: 0 0 2px rgba(255, 255, 255, 0.9);
+            }
+
+            &.btn-hidden {
+                visibility: hidden;
             }
         }
     }
