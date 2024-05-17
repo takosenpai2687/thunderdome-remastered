@@ -10,8 +10,8 @@ export class Particle {
         this.color = color;
         this.size = size;
         this.loadingStepPercentage = Math.min(
-            Math.random() + 1 / Engine.loadTime / 30,
-            1 / Engine.loadTime / 15
+            Math.random() + 1 / Engine.loadTime,
+            1 / Engine.loadTime / 2
         );
         this.isLoaded = false;
     }
@@ -40,7 +40,7 @@ export class Particle {
 }
 
 export class Engine {
-    static loadTime = 2;
+    static loadTime = 8;
     static suckRadius = 100;
     static fontSize = 72;
     static smallParticleSize = 4;
