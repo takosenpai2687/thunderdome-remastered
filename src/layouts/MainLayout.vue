@@ -268,10 +268,10 @@ $toolbar-height: 4rem;
 
         .logo {
             padding: 1rem 0;
-            transition: all .2s ease-out;
+            transition: all .25s ease-out;
 
             &:hover {
-                transform: scale(1.2);
+                transform: scale(1.15) rotate(360deg);
                 filter: drop-shadow(0 0 5px var(--line-color));
                 -webkit-filter: drop-shadow(0 0 5px var(--line-color));
             }
