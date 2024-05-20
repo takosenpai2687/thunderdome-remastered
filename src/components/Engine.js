@@ -22,20 +22,29 @@ export class Particle {
     }
 
     update() {
+        // Dragging back to initial position
+        this.x += (this.xi - this.x) * this.loadingStepPercentage;
+        this.y += (this.yi - this.y) * this.loadingStepPercentage;
+        // Mouse Interaction
         const dx = this.engine.mouseX - this.xi;
         const dy = this.engine.mouseY - this.yi;
+        // Early return if the particle is too far from the mouse
+        if (
+            Math.abs(dy) > Engine.suckRadius ||
+            Math.abs(dx) > Engine.suckRadius
+        ) {
+            return;
+        }
         const theta = Math.atan2(dy, dx);
         const dist = Math.sqrt(dx * dx + dy * dy);
         // Sucking effect
         if (dist < Engine.suckRadius) {
-            this.vx = -Math.cos(theta) * (Engine.suckRadius / dist) * 1;
-            this.vy = -Math.sin(theta) * (Engine.suckRadius / dist) * 1;
+            const distRatio = Engine.suckRadius / dist;
+            this.vx = -Math.cos(theta) * distRatio;
+            this.vy = -Math.sin(theta) * distRatio;
             this.x += this.vx;
             this.y += this.vy;
         }
-        // Dragging back to initial position
-        this.x += (this.xi - this.x) * this.loadingStepPercentage;
-        this.y += (this.yi - this.y) * this.loadingStepPercentage;
     }
 }
 
@@ -44,6 +53,7 @@ export class Engine {
     static suckRadius = 100;
     static fontSize = 72;
     static smallParticleSize = 4;
+    static largeParticleSize = 15;
 
     constructor(canvas, image) {
         this.canvas = canvas;
@@ -56,7 +66,7 @@ export class Engine {
         this.height = ch;
         this.particles = [];
         this.image = image;
-        this.stepSize = 15;
+        this.stepSize = Engine.largeParticleSize;
         this.mouseX = 0;
         this.mouseY = 0;
         Engine.suckRadius = Math.min(this.width, this.height) * 0.095;
