@@ -24,7 +24,7 @@ export default {
                 this.engine.ctx.clearRect(0, 0, canvas.width, canvas.height);
                 canvas.addEventListener('mousemove', this.handleMouseMove);
                 canvas.addEventListener('resize', this.handleResize);
-                this.animate();
+                this.engine.loop();
             }
         });
     },
@@ -41,11 +41,6 @@ export default {
         },
         onTick() {
             this.particles = this.engine.particles
-        },
-        animate() {
-            this.engine.render();
-            this.engine.update();
-            requestAnimationFrame(this.animate);
         },
         handleMouseMove(e) {
             const canvas = this.$refs.canvas;

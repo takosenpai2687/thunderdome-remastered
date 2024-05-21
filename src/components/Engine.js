@@ -9,10 +9,7 @@ export class Particle {
         this.vy = 0;
         this.color = color;
         this.size = size;
-        this.loadingStepPercentage = Math.min(
-            Math.random() + 1 / Engine.loadTime,
-            1 / Engine.loadTime / 2
-        );
+        this.loadingSpeed = 8;
         this.isLoaded = false;
     }
 
@@ -21,10 +18,10 @@ export class Particle {
         this.engine.ctx.fillRect(this.x, this.y, this.size, this.size);
     }
 
-    update() {
+    update(dt) {
         // Dragging back to initial position
-        this.x += (this.xi - this.x) * this.loadingStepPercentage;
-        this.y += (this.yi - this.y) * this.loadingStepPercentage;
+        this.x += (this.xi - this.x) * this.loadingSpeed * dt;
+        this.y += (this.yi - this.y) * this.loadingSpeed * dt;
         // Mouse Interaction
         const dx = this.engine.mouseX - this.xi;
         const dy = this.engine.mouseY - this.yi;
@@ -71,6 +68,7 @@ export class Engine {
         this.mouseY = 0;
         Engine.suckRadius = Math.min(this.width, this.height) * 0.095;
         this.init();
+        this.lastTime = null;
     }
 
     init() {
@@ -139,6 +137,18 @@ export class Engine {
     }
 
     update() {
-        this.particles.forEach((p) => p.update());
+        if (this.lastTime === null) {
+            this.lastTime = performance.now();
+        }
+        const now = performance.now();
+        const dt = (now - this.lastTime) / 1000;
+        this.particles.forEach((p) => p.update(dt));
+        this.lastTime = now;
+    }
+
+    loop() {
+        this.render();
+        this.update();
+        requestAnimationFrame(() => this.loop());
     }
 }
